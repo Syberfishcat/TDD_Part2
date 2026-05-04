@@ -47,6 +47,14 @@ export class Board {
   }
 
   hasFalling() {
-    return true;
+    if(this.fallingFlag) {
+      for(let i = 0; i < this.width; i++){
+        if (this.board[this.height - 1][i] !== '.'){
+          this.fallingFlag = false;
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
