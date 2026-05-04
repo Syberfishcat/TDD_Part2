@@ -23,16 +23,12 @@ export class Board {
     return str;
   }
 
-  isFalling() {
-    return this.board.flat().filter(item => item !== '.').length === 0;
-  }
-
   drop(symbol) {
     if(!this.fallingFlag){
       this.board[0][1] = symbol;
       this.fallingFlag = true;
       this.symbol = symbol;
-      this.location = { x: 0, y: 1};
+      this.location = { x: 1, y: 0};
     }else{
       throw "already falling";
     }
@@ -41,9 +37,9 @@ export class Board {
   tick() {
     let board_copy = structuredClone(this.board);
     for(let i = 0; i < this.width; i++) {
-        if (this.board[this.height - 1][i] === this.symbol){
-          this.fallingFlag = false;
-        }
+      if (this.board[this.height - 1][i] === this.symbol){
+        this.fallingFlag = false;
+      }
     }
     for(let i=0; i<this.height - 1; i++) {
       for(let j=0; j<this.width; j++) {
