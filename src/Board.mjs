@@ -35,7 +35,6 @@ export class Board {
   }
 
   tick() {
-    let board_copy = structuredClone(this.board);
     if(this.location.y === this.height - 1) {
       this.fallingFlag = false;
       return;
