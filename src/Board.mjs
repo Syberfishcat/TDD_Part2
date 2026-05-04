@@ -51,17 +51,9 @@ export class Board {
     for(let i=0; i<this.height - 1; i++) {
       for(let j=0; j<this.width; j++) {
         if(this.board[i][j] === this.symbol) {
-          if(this.board[i + 1][j] === '.'){
-            board_copy[i + 1][j] = board_copy[i][j];
-            board_copy[i][j] = '.';
-            break;
-          }else{
-            //this.fallingFlag = false;
-          }
         }
       }
     }
-    // this.board = board_copy;
   }
 
   hasFalling() {
