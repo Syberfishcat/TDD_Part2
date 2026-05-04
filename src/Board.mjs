@@ -20,8 +20,16 @@ export class Board {
     return str;
   }
 
+  isFalling() {
+    return this.board.flat().filter(item => item !== '.').length === 0;
+  }
+
   drop(symbol) {
-    this.board[0][1] = symbol;
+    if(this.isFalling()){
+      this.board[0][1] = symbol;
+    }else{
+      throw "already falling";
+    }
   }
 
   tick() {
