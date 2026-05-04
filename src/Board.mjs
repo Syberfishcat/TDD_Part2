@@ -36,10 +36,9 @@ export class Board {
 
   tick() {
     let board_copy = structuredClone(this.board);
-    for(let i = 0; i < this.width; i++) {
-      if (this.board[this.height - 1][i] === this.symbol){
-        this.fallingFlag = false;
-      }
+    if(this.location.y === this.height - 1) {
+      this.fallingFlag = false;
+      return;
     }
     for(let i=0; i<this.height - 1; i++) {
       for(let j=0; j<this.width; j++) {
