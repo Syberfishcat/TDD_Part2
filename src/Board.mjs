@@ -35,6 +35,11 @@ export class Board {
 
   tick() {
     let board_copy = structuredClone(this.board);
+    for(let i = 0; i < this.width; i++) {
+        if (this.board[this.height - 1][i] !== '.'){
+          this.fallingFlag = false;
+        }
+    }
     for(let i=0; i<this.height - 1; i++) {
       for(let j=0; j<this.width; j++) {
         if(this.board[i][j] !== '.') {
@@ -47,14 +52,6 @@ export class Board {
   }
 
   hasFalling() {
-    if(this.fallingFlag) {
-      for(let i = 0; i < this.width; i++){
-        if (this.board[this.height - 1][i] !== '.'){
-          this.fallingFlag = false;
-          return true;
-        }
-      }
-    }
-    return false;
+    return this.fallingFlag;
   }
 }
