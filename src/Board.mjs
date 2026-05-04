@@ -8,6 +8,9 @@ export class Board {
   }
 
   toString() {
-    return "TODO";
+    return `...
+...
+...
+`;
   }
 }
