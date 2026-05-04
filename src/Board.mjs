@@ -4,6 +4,7 @@ export class Board {
   board;
   fallingFlag;
   symbol;
+  location;
 
   constructor(width, height) {
     this.width = width;
@@ -31,6 +32,7 @@ export class Board {
       this.board[0][1] = symbol;
       this.fallingFlag = true;
       this.symbol = symbol;
+      this.location = { x: 0, y: 1};
     }else{
       throw "already falling";
     }
@@ -45,9 +47,14 @@ export class Board {
     }
     for(let i=0; i<this.height - 1; i++) {
       for(let j=0; j<this.width; j++) {
-        if(this.board[i][j] !== '.') {
-          board_copy[i + 1][j] = board_copy[i][j];
-          board_copy[i][j] = '.';
+        if(this.board[i][j] === this.symbol) {
+          if(this.board[i + 1][j] === '.'){
+            board_copy[i + 1][j] = board_copy[i][j];
+            board_copy[i][j] = '.';
+            this.location.y++;
+          }else{
+            this.fallingFlag = false;
+          }
         }
       }
     }
