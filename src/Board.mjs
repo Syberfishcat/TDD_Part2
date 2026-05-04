@@ -41,6 +41,9 @@ export class Board {
       return;
     }else {
       if(this.board[this.location.y + 1][this.location.x] === '.'){
+        this.board[this.location.y + 1][this.location.x] = this.symbol;
+        this.board[this.location.y][this.location.x] = '.';
+        this.location.y += 1;
       }else{
         this.fallingFlag = false;
       }
@@ -51,14 +54,14 @@ export class Board {
           if(this.board[i + 1][j] === '.'){
             board_copy[i + 1][j] = board_copy[i][j];
             board_copy[i][j] = '.';
-            this.location.y++;
+            break;
           }else{
-            this.fallingFlag = false;
+            //this.fallingFlag = false;
           }
         }
       }
     }
-    this.board = board_copy;
+    // this.board = board_copy;
   }
 
   hasFalling() {
