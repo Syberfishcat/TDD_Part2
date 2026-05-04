@@ -23,4 +23,11 @@ export class Board {
   drop(symbol) {
     this.board[0][1] = symbol;
   }
+
+  tick() {
+    for(let i=this.board.length - 1; i > 0; i--){
+      this.board[i] = this.board[i - 1];
+    }
+    this.board[0] = new Array(this.width).fill('.');
+  }
 }
