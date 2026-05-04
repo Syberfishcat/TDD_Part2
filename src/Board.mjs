@@ -38,4 +38,8 @@ export class Board {
     }
     this.board[0] = new Array(this.width).fill('.');
   }
+
+  hasFalling() {
+    return true;
+  }
 }
