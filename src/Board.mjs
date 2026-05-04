@@ -2,6 +2,7 @@ export class Board {
   width;
   height;
   board;
+  fallingFlag = true;
 
   constructor(width, height) {
     this.width = width;
@@ -33,10 +34,16 @@ export class Board {
   }
 
   tick() {
-    for(let i=this.board.length - 1; i > 0; i--){
-      this.board[i] = this.board[i - 1];
+    let board_copy = structuredClone(this.board);
+    for(let i=0; i<this.height - 1; i++) {
+      for(let j=0; j<this.width; j++) {
+        if(this.board[i][j] !== '.') {
+          board_copy[i + 1][j] = board_copy[i][j];
+          board_copy[i][j] = '.';
+        }
+      }
     }
-    this.board[0] = new Array(this.width).fill('.');
+    this.board = board_copy;
   }
 
   hasFalling() {
