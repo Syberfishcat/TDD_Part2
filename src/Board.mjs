@@ -19,4 +19,8 @@ export class Board {
     })
     return str;
   }
+
+  drop(symbol) {
+    this.board[0][1] = symbol;
+  }
 }
