@@ -2,7 +2,8 @@ export class Board {
   width;
   height;
   board;
-  fallingFlag = true;
+  fallingFlag;
+  symbol;
 
   constructor(width, height) {
     this.width = width;
@@ -26,8 +27,10 @@ export class Board {
   }
 
   drop(symbol) {
-    if(this.isFalling()){
+    if(!this.fallingFlag){
       this.board[0][1] = symbol;
+      this.fallingFlag = true;
+      this.symbol = symbol;
     }else{
       throw "already falling";
     }
@@ -36,7 +39,7 @@ export class Board {
   tick() {
     let board_copy = structuredClone(this.board);
     for(let i = 0; i < this.width; i++) {
-        if (this.board[this.height - 1][i] !== '.'){
+        if (this.board[this.height - 1][i] === this.symbol){
           this.fallingFlag = false;
         }
     }
