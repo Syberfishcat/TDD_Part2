@@ -48,12 +48,6 @@ export class Board {
         this.fallingFlag = false;
       }
     }
-    for(let i=0; i<this.height - 1; i++) {
-      for(let j=0; j<this.width; j++) {
-        if(this.board[i][j] === this.symbol) {
-        }
-      }
-    }
   }
 
   hasFalling() {
