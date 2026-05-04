@@ -39,6 +39,11 @@ export class Board {
     if(this.location.y === this.height - 1) {
       this.fallingFlag = false;
       return;
+    }else {
+      if(this.board[this.location.y + 1][this.location.x] === '.'){
+      }else{
+        this.fallingFlag = false;
+      }
     }
     for(let i=0; i<this.height - 1; i++) {
       for(let j=0; j<this.width; j++) {
