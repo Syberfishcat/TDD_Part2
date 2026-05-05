@@ -1,9 +1,12 @@
+import { Tetromino } from "./Tetromino.mjs";
+
 export class Board {
   width;
   height;
   board;
   fallingFlag;
   tetromino;
+  tetromino1;
 
   constructor(width, height) {
     this.width = width;
@@ -33,6 +36,7 @@ export class Board {
 
   drop(symbol) {
     this.tetromino = this.parseSymbol(symbol);
+    this.tetromino1 = Tetromino.from(symbol);
     if(!this.fallingFlag){
       const x = parseInt((this.width - this.tetromino.width) / 2);
       for(let i = 0; i < this.tetromino.height; i++) {

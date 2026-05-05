@@ -7,4 +7,8 @@ export class Tetromino {
         this.width = this.rows[0].length;
         this.height = this.rows.length;
     }
+
+    static from(symbol) {
+        return new Tetromino(symbol)
+    }
 }
