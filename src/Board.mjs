@@ -5,6 +5,7 @@ export class Board {
   fallingFlag;
   symbol;
   location;
+  tetromino;
 
   constructor(width, height) {
     this.width = width;
@@ -25,22 +26,19 @@ export class Board {
 
   parseSymbol(symbol) {
     return {
-      tetromino: symbol.split('\n'),
+      tetrominoArr: symbol.split('\n'),
       width: symbol.split('\n')[0].length,
       height: symbol.split('\n').length
     }
   }
 
   drop(symbol) {
-    let tetromino = symbol.split('\n');
-    let width = tetromino[0].length;
-    let height = tetromino.length;
-    let tetrominoObj = this.parseSymbol(symbol);
+    this.tetromino = this.parseSymbol(symbol);
     if(!this.fallingFlag){
-      const x = parseInt((this.width - width) / 2);
-      for(let i = 0; i < height; i++) {
-        for(let j = 0; j < width; j++) {
-          this.board[i][x + j] = [...tetromino[i]][j];
+      const x = parseInt((this.width - this.tetromino.width) / 2);
+      for(let i = 0; i < this.tetromino.height; i++) {
+        for(let j = 0; j < this.tetromino.width; j++) {
+          this.board[i][x + j] = [...this.tetromino.tetrominoArr[i]][j];
         }
       }
       this.fallingFlag = true;
