@@ -169,4 +169,27 @@ describe("Falling tetrominoes", () => {
        TTTTTT....`
     );
   })
+
+  test("it cannot be moved right through other blocks", () => {
+    board.drop(Tetromino.T_SHAPE);
+    fallToBottom(board)
+    board.moveDown();
+    board.moveRight();
+    board.moveRight();
+    board.moveRight();
+    board.moveRight();
+    board.drop(Tetromino.T_SHAPE);
+    fallToBottom(board);
+    board.moveRight();
+    board.moveRight();
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       .....T..T.
+       ....TTTTTT`
+    );
+  })
 });
