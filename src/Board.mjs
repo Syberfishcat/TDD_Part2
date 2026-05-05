@@ -57,12 +57,11 @@ export class Board {
       }
     }
 
-      if(this.board[bottomEdge + 1][this.location.x] === '.'){
-        this.board[this.location.y + 1][this.location.x] = this.tetromino.tetrominoStr;
-        this.board[this.location.y][this.location.x] = '.';
-        this.location.y += 1;
-      }
-    
+    if(this.board[bottomEdge + 1][this.location.x] === '.'){
+      this.board[this.location.y + 1][this.location.x] = this.tetromino.tetrominoStr;
+      this.board[this.location.y][this.location.x] = '.';
+      this.location.y += 1;
+    }
   }
 
   hasFalling() {
