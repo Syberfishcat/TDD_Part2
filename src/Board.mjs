@@ -5,7 +5,8 @@ export class Board {
   height;
   board;
   fallingFlag;
-  tetromino1;  
+  tetromino1;
+  tetromino;
 
   constructor(width, height) {
     this.width = width;
@@ -34,13 +35,13 @@ export class Board {
   }
 
   drop(symbol) {
-    this.tetromino = this.parseSymbol(symbol);
     this.tetromino1 = Tetromino.from(symbol);
+    this.tetromino = Tetromino.from(symbol);
     if(!this.fallingFlag){
-      const x = parseInt((this.width - this.tetromino1.width) / 2);
-      for(let i = 0; i < this.tetromino1.height; i++) {
-        for(let j = 0; j < this.tetromino1.width; j++) {
-          this.board[i][x + j] = [...this.tetromino1.rows[i]][j];
+      const x = parseInt((this.width - this.tetromino.width) / 2);
+      for(let i = 0; i < this.tetromino.height; i++) {
+        for(let j = 0; j < this.tetromino.width; j++) {
+          this.board[i][x + j] = [...this.tetromino.rows[i]][j];
         }
       }
       this.fallingFlag = true;
