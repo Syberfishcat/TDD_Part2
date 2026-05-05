@@ -30,6 +30,12 @@ export class Tetromino {
         return false;
         }
 
-        
+        for(let i = this.tetromino.location.x; i < this.tetromino.location.x + this.tetromino.width; i++){
+            if(this.board[bottomEdge + 1][i] !== '.'){
+                this.fallingFlag = false;
+                return false;
+            }
+        }
+        return true;
     }
 }
