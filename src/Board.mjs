@@ -3,7 +3,6 @@ export class Board {
   height;
   board;
   fallingFlag;
-  symbol;
   location;
   tetromino;
 
