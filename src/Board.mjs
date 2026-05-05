@@ -78,6 +78,16 @@ export class Board {
     this.tetromino.location.x -= 1;
   }
 
+  moveRight() {
+    let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+    for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
+      for (let j = this.tetromino.location.x + this.tetromino.width - 1; j >= this.tetromino.location.x; j--) {
+        this.board[i][j + 1] = this.board[i][j];
+        this.board[i][j] = '.';
+      }
+    }this.tetromino.location.x += 1;
+  }
+
   tick() {
     let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
     if(!this.canMove()) return;
