@@ -57,4 +57,18 @@ describe("Falling tetrominoes", () => {
        ...TTT....`
     );
   });
+
+  test("a falling tetromino can be moved left", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.moveLeft();
+
+    expect(board.toString()).to.equalShape(
+      `...T......
+       ..TTT.....
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  })
 });
