@@ -43,6 +43,7 @@ export class Board {
       }
       this.fallingFlag = true;
       this.location = { x, y: 0};
+      this.tetromino.location = { x, y: 0 };
     }else{
       throw "already falling";
     }
@@ -73,6 +74,7 @@ export class Board {
       }
     }
     this.location.y += 1;
+    this.tetromino.location.y += 1;
   }
 
   tick() {
