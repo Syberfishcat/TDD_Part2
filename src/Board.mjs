@@ -50,8 +50,13 @@ export class Board {
 
   tick() {
     let bottomEdge = this.location.y + this.tetromino.height - 1;
+    if(bottomEdge === this.height - 1) {
+      this.fallingFlag = false;
+      return;
+    }
+
     for(let i = this.location.x; i < this.location.x + this.tetromino.width; i++){
-      if(bottomEdge === this.height - 1 || this.board[bottomEdge + 1][i] !== '.'){
+      if(this.board[bottomEdge + 1][i] !== '.'){
         this.fallingFlag = false;
         return;
       }
