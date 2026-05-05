@@ -11,4 +11,14 @@ export class Tetromino {
     static from(symbol) {
         return new Tetromino(symbol)
     }
+    Move() {
+        let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+        for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
+        for (let j = this.tetromino.location.x; j <= this.tetromino.location.x + this.tetromino.width - 1; j++) {
+            this.board[i + 1][j] = this.board[i][j];
+            this.board[i][j] = '.';
+        }
+        }
+        this.tetromino.location.y += 1;
+    }
 }
