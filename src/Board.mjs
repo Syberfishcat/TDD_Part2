@@ -24,15 +24,6 @@ export class Board {
     return str;
   }
 
-  parseSymbol(symbol) {
-    return {
-      tetrominoArr: symbol.split('\n'),
-      tetrominoStr: symbol,
-      width: symbol.split('\n')[0].length,
-      height: symbol.split('\n').length
-    }
-  }
-
   drop(symbol) {
     this.tetromino = Tetromino.from(symbol);
     if(!this.fallingFlag){
