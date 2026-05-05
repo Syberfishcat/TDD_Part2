@@ -49,6 +49,12 @@ export class Board {
   }
 
   canMove() {
+    let flag = true;
+    let bottomEdge = this.location.y + this.tetromino.height - 1;
+    if(bottomEdge === this.height - 1) {
+      flag = false;
+      return;
+    }
 
   }
 
