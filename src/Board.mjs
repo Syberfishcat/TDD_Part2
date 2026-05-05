@@ -49,16 +49,15 @@ export class Board {
   }
 
   canMove() {
-    let flag = true;
     let bottomEdge = this.location.y + this.tetromino.height - 1;
     if(bottomEdge === this.height - 1) {
-      flag = false;
+      this.fallingFlag = false;
       return;
     }
 
     for(let i = this.location.x; i < this.location.x + this.tetromino.width; i++){
       if(this.board[bottomEdge + 1][i] !== '.'){
-        flag = false;
+        this.fallingFlag = false;
         return;
       }
     }
@@ -77,6 +76,8 @@ export class Board {
         return;
       }
     }
+    this.canMove();
+    if(!this.fallingFlag) return;
 
     if(this.board[bottomEdge + 1][this.location.x] === '.'){
       this.board[this.location.y + 1][this.location.x] = this.tetromino.tetrominoStr;
