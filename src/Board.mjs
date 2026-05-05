@@ -58,10 +58,16 @@ export class Board {
 
   moveDown() {
     let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
-    if(bottomEdge === this.height - 1) return;
+    if(bottomEdge === this.height - 1) {
+      this.fallingFlag = false;
+      return;
+    }
 
     for (let j = this.tetromino.location.x; j <= this.tetromino.location.x + this.tetromino.width - 1; j++) {
-      if(this.board[bottomEdge + 1][j] !== '.') return;
+      if(this.board[bottomEdge + 1][j] !== '.') {
+        this.fallingFlag = false;
+        return;
+      }
     }
 
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
@@ -109,9 +115,6 @@ export class Board {
   }
 
   tick() {
-    let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
-    if(!this.canMove()) return;
-
     this.moveDown();
   }
 
