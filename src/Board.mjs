@@ -24,7 +24,7 @@ export class Board {
   }
 
   drop(symbol) {
-    let tetromino = symbol.split('\n');
+    let tetromino = symbol.tetromino ? symbol.tetromino : symbol.split('\n');
     let width = tetromino[0].length;
     let height = tetromino.length;
     if(!this.fallingFlag){
