@@ -70,9 +70,9 @@ export class Board {
       for (let j = this.location.x; j <= this.location.x + this.tetromino.width - 1; j++) {
         this.board[i + 1][j] = this.board[i][j];
         this.board[i][j] = '.';
-        this.location.y += 1;
       }
     }
+    this.location.y += 1;
   }
 
   tick() {
