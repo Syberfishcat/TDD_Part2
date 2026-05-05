@@ -22,22 +22,24 @@ export class RotatingShape {
     }
 
     rotateRight() {
-        let newCube = Array.from({ length: this.size }, () => new Array(this.size).fill(''));
+        let newCube = Array.from({ length: this.size }, () => new Array(this.size).fill('.'));
+
         for (let i = 0; i < this.size; i++){
             for (let j = 0; j < this.size; j++) {
                 newCube[j][this.size - 1 - i] = this.cube[i][j];
             }
         }
-        return new RotatingShape({size: this.size, cube: newCube});
+        return new RotatingShape({ size: this.size, cube: newCube });
     }
 
     rotateLeft() {
-        let newCube = Array.from({ length: this.size }, () => new Array(this.size).fill(''));
+        let newCube = Array.from({ length: this.size }, () => new Array(this.size).fill('.'));
+
         for (let i = 0; i < this.size; i++){
             for (let j = 0; j < this.size; j++) {
                 newCube[this.size - 1 - j][i] = this.cube[i][j];
             }
         }
-        return new RotatingShape({size: this.size, cube: newCube});
+        return new RotatingShape({ size: this.size, cube: newCube });
     }
 }
