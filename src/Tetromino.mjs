@@ -6,5 +6,7 @@ export class Tetromino {
     width;
     constructor(pattern){
         this.tetromino = pattern.split('\n');
+        this.width = this.tetromino[0].length;
+        this.height = this.tetromino.length;
     }
 }

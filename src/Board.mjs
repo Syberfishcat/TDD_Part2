@@ -28,14 +28,15 @@ export class Board {
     let width = tetromino[0].length;
     let height = tetromino.length;
     if(!this.fallingFlag){
+      const x = parseInt((this.width - width) / 2);
       for(let i = 0; i < height; i++) {
         for(let j = 0; j < width; j++) {
-          this.board[i][parseInt((this.width - width) / 2) + j] = [...tetromino[i]][j];
+          this.board[i][x + j] = [...tetromino[i]][j];
         }
       }
       this.fallingFlag = true;
       this.symbol = symbol;
-      this.location = { x: 1, y: 0};
+      this.location = { x, y: 0};
     }else{
       throw "already falling";
     }
