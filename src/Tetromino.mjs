@@ -24,18 +24,11 @@ export class Tetromino {
     }
 
     canMove() {
+        console.log(this.location)
         let bottomEdge = this.location.y + this.height - 1;
         if(bottomEdge === this.height - 1) {
         this.fallingFlag = false;
         return false;
         }
-
-        for(let i = this.location.x; i < this.location.x + this.width; i++){
-            if(this.board[bottomEdge + 1][i] !== '.'){
-                this.fallingFlag = false;
-                return false;
-            }
-        }
-        return true;
     }
 }
