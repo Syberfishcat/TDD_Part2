@@ -23,5 +23,13 @@ export class Tetromino {
         this.tetromino.location.y += 1;
     }
 
+    canMove() {
+        let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+        if(bottomEdge === this.height - 1) {
+        this.fallingFlag = false;
+        return false;
+        }
 
+        
+    }
 }
