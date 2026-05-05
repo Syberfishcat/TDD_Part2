@@ -35,4 +35,12 @@ export class RotatingShape {
             IFC`
         );
     }
+
+    rotateLeft() {
+        return new RotatingShape(
+            `CFI
+            BEH
+            ADG`
+        )
+    }
 }
