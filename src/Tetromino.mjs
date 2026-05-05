@@ -11,6 +11,7 @@ export class Tetromino {
     static from(symbol) {
         return new Tetromino(symbol)
     }
+
     Move() {
         let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
         for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
@@ -21,4 +22,6 @@ export class Tetromino {
         }
         this.tetromino.location.y += 1;
     }
+
+
 }
