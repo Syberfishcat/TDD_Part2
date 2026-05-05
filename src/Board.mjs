@@ -27,6 +27,7 @@ export class Board {
   parseSymbol(symbol) {
     return {
       tetrominoArr: symbol.split('\n'),
+      tetrominoStr: symbol,
       width: symbol.split('\n')[0].length,
       height: symbol.split('\n').length
     }
@@ -42,7 +43,6 @@ export class Board {
         }
       }
       this.fallingFlag = true;
-      this.symbol = symbol;
       this.location = { x, y: 0};
     }else{
       throw "already falling";
@@ -55,7 +55,7 @@ export class Board {
       return;
     }else {
       if(this.board[this.location.y + 1][this.location.x] === '.'){
-        this.board[this.location.y + 1][this.location.x] = this.symbol;
+        this.board[this.location.y + 1][this.location.x] = this.tetromino.tetrominoStr;
         this.board[this.location.y][this.location.x] = '.';
         this.location.y += 1;
       }else{
