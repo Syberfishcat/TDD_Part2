@@ -23,10 +23,19 @@ export class Board {
     return str;
   }
 
+  parseSymbol(symbol) {
+    return {
+      tetromino: symbol.split('\n'),
+      width: symbol.split('\n')[0].length,
+      height: symbol.split('\n').length
+    }
+  }
+
   drop(symbol) {
     let tetromino = symbol.split('\n');
     let width = tetromino[0].length;
     let height = tetromino.length;
+    let tetrominoObj = this.parseSymbol(symbol);
     if(!this.fallingFlag){
       const x = parseInt((this.width - width) / 2);
       for(let i = 0; i < height; i++) {
