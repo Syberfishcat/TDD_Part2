@@ -1,18 +1,19 @@
 export class RotatingShape {
     cube;
     size;
-    constructor(fomatStr) {
+    constructor(str) {
+        let fomatStr = [...str].filter(item => /^[a-zA-Z\n]$/.test(item)).join('') + '\n';
         this.size = fomatStr.split('\n')[0].length;
+        this.cube = Array.from({ length: this.size }, () => new Array(this.size).fill(''));
         let formatArr = [...fomatStr].filter(c => c !== '\n');
         for (let i = 0; i < this.size; i++){
             for (let j = 0; j < this.size; j++) {
+                this.cube[i][j] = formatArr[i * this.size + j];
             }
         }
-        this.cube = fomatStr;
     }
 
-    static fromString(itemStr) {
-        let str = [...itemStr].filter(item => /^[a-zA-Z\n]$/.test(item)).join('') + '\n'
+    static fromString(str) {
         return new RotatingShape(str);
     }
     
@@ -24,6 +25,6 @@ export class RotatingShape {
             }
             res += '\n'
         }
-        return this.cube.toString();
+        return res;
     }
 }
