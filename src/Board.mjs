@@ -58,6 +58,8 @@ export class Board {
 
   moveDown() {
     let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+    if(bottomEdge === this.height - 1) return;
+    
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
       for (let j = this.tetromino.location.x; j <= this.tetromino.location.x + this.tetromino.width - 1; j++) {
         this.board[i + 1][j] = this.board[i][j];
