@@ -5,7 +5,6 @@ export class Board {
   height;
   board;
   fallingFlag;
-  tetromino1;
   tetromino;
 
   constructor(width, height) {
@@ -35,7 +34,6 @@ export class Board {
   }
 
   drop(symbol) {
-    this.tetromino1 = Tetromino.from(symbol);
     this.tetromino = Tetromino.from(symbol);
     if(!this.fallingFlag){
       const x = parseInt((this.width - this.tetromino.width) / 2);
@@ -46,7 +44,6 @@ export class Board {
       }
       this.fallingFlag = true;
       this.tetromino.location = { x, y: 0 };
-      this.tetromino1.location = { x, y: 0 };
     }else{
       throw "already falling";
     }
