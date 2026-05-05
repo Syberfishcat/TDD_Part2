@@ -2,7 +2,10 @@ export class RotatingShape {
     cube;
     size;
     constructor(str) {
-        if(str.map){}else{
+        if(str.cube){
+            this.cube = str.cube;
+            this.size = str.size;
+        }else{
             let fomatStr = [...str].filter(item => /^[a-zA-Z\n]$/.test(item)).join('') + '\n';
             this.size = fomatStr.split('\n')[0].length;
             this.cube = Array.from({ length: this.size }, () => new Array(this.size).fill(''));
@@ -31,11 +34,7 @@ export class RotatingShape {
     }
 
     rotateRight() {
-        return new RotatingShape(
-            `GDA
-            HEB
-            IFC`
-        );
+        return new RotatingShape({cube: [['G','D','A'], ['H','E','B'], ['I','F','C']], size: 3});
     }
 
     rotateLeft() {
