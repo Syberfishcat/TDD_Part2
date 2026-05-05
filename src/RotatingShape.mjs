@@ -18,14 +18,7 @@ export class RotatingShape {
     }
     
     toString() {
-        let res = "";
-        for (let i = 0; i < this.size; i++){
-            for (let j = 0; j < this.size; j++) {
-                res += this.cube[i][j];
-            }
-            res += '\n'
-        }
-        return res;
+        return this.cube.map(row => row.join('')).join('\n') + '\n';
     }
 
     rotateRight() {
