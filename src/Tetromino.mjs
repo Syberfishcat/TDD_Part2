@@ -22,13 +22,4 @@ export class Tetromino {
         }
         this.location.y += 1;
     }
-
-    canMove() {
-        console.log(this.location)
-        let bottomEdge = this.location.y + this.height - 1;
-        if(bottomEdge === this.height - 1) {
-        this.fallingFlag = false;
-        return false;
-        }
-    }
 }
