@@ -19,7 +19,16 @@ export class RotatingShape {
     }
 
     static fromString(str) {
-        return new RotatingShape(str);
+        let fomatStr = [...str].filter(item => /^[a-zA-Z\n]$/.test(item)).join('') + '\n';
+        let size = fomatStr.split('\n')[0].length;
+        let cube = Array.from({ length: size }, () => new Array(size).fill(''));
+        let formatArr = [...fomatStr].filter(c => c !== '\n');
+        for (let i = 0; i < size; i++){
+            for (let j = 0; j < size; j++) {
+                cube[i][j] = formatArr[i * size + j];
+            }
+        }
+        return new RotatingShape({size: size, cube: cube});
     }
     
     toString() {
