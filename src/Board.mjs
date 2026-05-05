@@ -38,14 +38,15 @@ export class Board {
     this.tetromino = this.parseSymbol(symbol);
     this.tetromino1 = Tetromino.from(symbol);
     if(!this.fallingFlag){
-      const x = parseInt((this.width - this.tetromino.width) / 2);
-      for(let i = 0; i < this.tetromino.height; i++) {
-        for(let j = 0; j < this.tetromino.width; j++) {
-          this.board[i][x + j] = [...this.tetromino.tetrominoArr[i]][j];
+      const x = parseInt((this.width - this.tetromino1.width) / 2);
+      for(let i = 0; i < this.tetromino1.height; i++) {
+        for(let j = 0; j < this.tetromino1.width; j++) {
+          this.board[i][x + j] = [...this.tetromino1.rows[i]][j];
         }
       }
       this.fallingFlag = true;
       this.tetromino.location = { x, y: 0 };
+      this.tetromino1.location = { x, y: 0 };
     }else{
       throw "already falling";
     }
