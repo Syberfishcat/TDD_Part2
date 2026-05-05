@@ -1,7 +1,13 @@
 export class RotatingShape {
-    shape;
+    cube;
+    size;
     constructor(fomatStr) {
-        this.shape = fomatStr;
+        this.size = fomatStr.split('\n')[0].length;
+        for (let i = 0; i < this.size; i++){
+            for (let j = 0; j < this.size; j++) {
+            }
+        }
+        this.cube = fomatStr;
     }
 
     static fromString(itemStr) {
@@ -10,6 +16,6 @@ export class RotatingShape {
     }
     
     toString() {
-        return this.shape.toString();
+        return this.cube.toString();
     }
 }
