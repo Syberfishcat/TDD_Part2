@@ -13,24 +13,24 @@ export class Tetromino {
     }
 
     Move() {
-        let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
-        for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
-        for (let j = this.tetromino.location.x; j <= this.tetromino.location.x + this.tetromino.width - 1; j++) {
+        let bottomEdge = this.location.y + this.height - 1;
+        for (let i = bottomEdge; i >= bottomEdge - this.height + 1; i--) {
+        for (let j = this.location.x; j <= this.location.x + this.width - 1; j++) {
             this.board[i + 1][j] = this.board[i][j];
             this.board[i][j] = '.';
         }
         }
-        this.tetromino.location.y += 1;
+        this.location.y += 1;
     }
 
     canMove() {
-        let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+        let bottomEdge = this.location.y + this.height - 1;
         if(bottomEdge === this.height - 1) {
         this.fallingFlag = false;
         return false;
         }
 
-        for(let i = this.tetromino.location.x; i < this.tetromino.location.x + this.tetromino.width; i++){
+        for(let i = this.location.x; i < this.location.x + this.width; i++){
             if(this.board[bottomEdge + 1][i] !== '.'){
                 this.fallingFlag = false;
                 return false;
