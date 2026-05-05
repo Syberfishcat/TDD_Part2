@@ -56,6 +56,12 @@ export class Board {
       return;
     }
 
+    for(let i = this.location.x; i < this.location.x + this.tetromino.width; i++){
+      if(this.board[bottomEdge + 1][i] !== '.'){
+        flag = false;
+        return;
+      }
+    }
   }
 
   tick() {
