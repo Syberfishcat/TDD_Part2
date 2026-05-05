@@ -49,16 +49,22 @@ export class Board {
   }
 
   tick() {
-    if(this.location.y === this.height - 1) {
+    let bottomEdge = this.location.y + this.tetromino.height - 1;
+    if(bottomEdge === this.height - 1) {
       this.fallingFlag = false;
       return;
     }else {
-      if(this.board[this.location.y + 1][this.location.x] === '.'){
+      for(let i = this.location.x; i < this.location.x + this.tetromino.width; i++){
+        if(this.board[bottomEdge + 1][i] !== '.'){
+          this.fallingFlag = false;
+          return;
+        }
+      }
+
+      if(this.board[bottomEdge + 1][this.location.x] === '.'){
         this.board[this.location.y + 1][this.location.x] = this.tetromino.tetrominoStr;
         this.board[this.location.y][this.location.x] = '.';
         this.location.y += 1;
-      }else{
-        this.fallingFlag = false;
       }
     }
   }
