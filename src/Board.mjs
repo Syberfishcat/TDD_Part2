@@ -64,6 +64,15 @@ export class Board {
     return true;
   }
 
+  Move() {
+    let bottomEdge = this.location.y + this.tetromino.height - 1;
+    for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
+      for (let j = this.location.x; j <= this.location.x + this.tetromino.width - 1; j++) {
+        this.board[i + 1][j] = this.board[i][j];
+      }
+    }
+  }
+
   tick() {
     let bottomEdge = this.location.y + this.tetromino.height - 1;
     if(!this.canMove()) return;
