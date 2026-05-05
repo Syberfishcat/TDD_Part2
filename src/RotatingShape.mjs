@@ -10,11 +10,6 @@ export class RotatingShape {
             this.size = fomatStr.split('\n')[0].length;
             this.cube = Array.from({ length: this.size }, () => new Array(this.size).fill(''));
             let formatArr = [...fomatStr].filter(c => c !== '\n');
-            for (let i = 0; i < this.size; i++){
-                for (let j = 0; j < this.size; j++) {
-                    this.cube[i][j] = formatArr[i * this.size + j];
-                }
-            }
         }
     }
 
@@ -47,10 +42,6 @@ export class RotatingShape {
     }
 
     rotateLeft() {
-        return new RotatingShape(
-            `CFI
-            BEH
-            ADG`
-        )
+        return new RotatingShape({cube: [['C','F','I'], ['B','E','H'], ['A','D','G']], size: 3});
     }
 }
