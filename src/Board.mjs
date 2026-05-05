@@ -5,8 +5,7 @@ export class Board {
   height;
   board;
   fallingFlag;
-  tetromino;
-  tetromino1;
+  tetromino1;  
 
   constructor(width, height) {
     this.width = width;
@@ -53,13 +52,13 @@ export class Board {
   }
 
   canMove() {
-    let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+    let bottomEdge = this.tetromino1.location.y + this.tetromino1.height - 1;
     if(bottomEdge === this.height - 1) {
       this.fallingFlag = false;
       return false;
     }
 
-    for(let i = this.tetromino.location.x; i < this.tetromino.location.x + this.tetromino.width; i++){
+    for(let i = this.tetromino1.location.x; i < this.tetromino1.location.x + this.tetromino1.width; i++){
       if(this.board[bottomEdge + 1][i] !== '.'){
         this.fallingFlag = false;
         return false;
@@ -69,18 +68,18 @@ export class Board {
   }
 
   Move() {
-    let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
-    for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
-      for (let j = this.tetromino.location.x; j <= this.tetromino.location.x + this.tetromino.width - 1; j++) {
+    let bottomEdge = this.tetromino1.location.y + this.tetromino1.height - 1;
+    for (let i = bottomEdge; i >= bottomEdge - this.tetromino1.height + 1; i--) {
+      for (let j = this.tetromino1.location.x; j <= this.tetromino1.location.x + this.tetromino1.width - 1; j++) {
         this.board[i + 1][j] = this.board[i][j];
         this.board[i][j] = '.';
       }
     }
-    this.tetromino.location.y += 1;
+    this.tetromino1.location.y += 1;
   }
 
   tick() {
-    let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+    let bottomEdge = this.tetromino1.location.y + this.tetromino1.height - 1;
     if(!this.canMove()) return;
 
     this.Move();
