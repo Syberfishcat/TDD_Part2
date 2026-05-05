@@ -27,4 +27,12 @@ export class RotatingShape {
         }
         return res;
     }
+
+    rotateRight() {
+        return new RotatingShape(
+            `GDA
+            HEB
+            IFC`
+        );
+    }
 }
