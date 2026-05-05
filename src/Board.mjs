@@ -24,6 +24,10 @@ export class Board {
   }
 
   drop(symbol) {
+    let tetromino = symbol.split('\n');
+    let width = tetromino[0].length;
+    let height = tetromino.length;
+    let arr = Array.from({ length: height }, () => new Array(this.width).fill('.'));
     if(!this.fallingFlag){
       this.board[0][1] = symbol;
       this.fallingFlag = true;
