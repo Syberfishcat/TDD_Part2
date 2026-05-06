@@ -1,5 +1,11 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 
+function realign(rotated) {
+    const cube = rotated.cube.map(r => [...r]);
+
+    return new RotatingShape({ size: rotated.size, cube });
+}
+
 export class Tetromino {
     static T_SHAPE = new Tetromino(`.T.\nTTT\n...`);
 
