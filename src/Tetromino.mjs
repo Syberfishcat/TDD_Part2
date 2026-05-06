@@ -25,7 +25,7 @@ export class Tetromino {
         ".....\n.....\nIIII.\n.....\n.....",
         "..I..\n..I..\n..I..\n..I..\n.....",
     ]);
-    
+
     static O_SHAPE = Tetromino.fromOrientations([
         ".OO\n.OO\n...",
     ]);
