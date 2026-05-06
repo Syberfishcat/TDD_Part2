@@ -58,7 +58,8 @@ export class Tetromino {
     }
 
     static fromOrientations(orientations) {
-        return new Tetromino(orientations[0]);
+        const shapes = orientations.map(s => RotatingShape.fromString(s));
+        return new Tetromino(shapes[0], shapes);
     }
 
     static from(shape) {
