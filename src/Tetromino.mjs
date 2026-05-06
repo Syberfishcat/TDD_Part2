@@ -17,6 +17,15 @@ export class Tetromino {
             .filter(row => [...row].some(cell => cell !== '.'));
         this.width = this.rows[0].length;
         this.height = this.rows.length;
+
+        const seen = new Map();
+        let cur = this.shape;
+        while (!seen.has(cur.toString())) {
+            seen.set(cur.toString(), cur);
+            cur = cur.rotateRight();
+        }
+        this.orientations = [...seen.values()];
+        this.index = 0;
     }
 
     static from(shape) {
