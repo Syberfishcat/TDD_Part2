@@ -68,12 +68,13 @@ export class Tetromino {
 
     rotateRight() {
         const next = (this.index + 1) % this.orientations.length;
-        return new Tetromino(this.orientations[next]);
+        return new Tetromino(this.orientations[next], this.orientations, next);
     }
-    
+
     rotateLeft() {
         const len = this.orientations.length;
-        return new Tetromino(this.orientations[(this.index - 1 + len) % len]);
+        const next = (this.index - 1 + len) % len;
+        return new Tetromino(this.orientations[next], this.orientations, next);
     }
 
     toString()    { return this.shape.toString(); }
