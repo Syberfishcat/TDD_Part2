@@ -45,10 +45,13 @@ export class Board {
 
   paintTetromino(tetromino) {
     let canvas = structuredClone(this.frozen);
-    let position = this.board.fallingPos;
-    let i = 0;
-    while(i < tetromino.shape.size) {
-      i++;
+    let fallingXPos = this.fallingPos.x;
+    let fallingYPos = this.fallingPos.y;
+    let fallingSize = tetromino.shape.size;
+    for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
+      for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
+        canvas[y][x] = tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];
+      }
     }
     this.frozen = canvas;
   }
