@@ -110,7 +110,10 @@ export class Board {
     let fallingSize = this.tetromino.shape.size;
     for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
       for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
-        this.board[y][x] = this.tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];}}}
+        this.board[y][x] = this.tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];
+      }
+    }
+  }
 
   tick() {
     this.moveDown();
