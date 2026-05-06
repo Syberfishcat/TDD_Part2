@@ -5,11 +5,7 @@ export class Tetromino {
 
     static I_SHAPE = new Tetromino(`.....\n.....\nIIII.\n.....\n.....`);
 
-    static O_SHAPE = RotatingShape.fromString(
-      `.OO
-       .OO
-       ...`
-    );
+    static O_SHAPE = new Tetromino(`.OO\n.OO\n...`);
 
     constructor(shape) {
         if (shape instanceof Tetromino) shape = shape.shape;
