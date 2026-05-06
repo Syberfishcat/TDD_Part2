@@ -17,11 +17,8 @@ export class Tetromino {
         ".OO\n.OO\n...",
     ]);
 
-    constructor(shape, orientations, index = 0) {
-        if (shape instanceof Tetromino) shape = shape.shape;
-        this.shape = shape instanceof RotatingShape
-            ? shape
-            : RotatingShape.fromString(shape);
+    constructor(orientations, index = 0) {
+        this.shape = orientations[index];
         this.rows = this.shape.cube
             .map(row => row.join(''))
             .filter(row => [...row].some(cell => cell !== '.'));
@@ -34,23 +31,23 @@ export class Tetromino {
 
     static fromOrientations(orientations) {
         const shapes = orientations.map(s => RotatingShape.fromString(s));
-        return new Tetromino(shapes[0], shapes);
+        return new Tetromino(shapes);
     }
 
     static fromSymbol(symbol) {
         let orientations = new Array(RotatingShape.fromString(symbol));
-        return new Tetromino(orientations[0], orientations);
+        return new Tetromino(orientations);
     }
 
     rotateRight() {
         const next = (this.index + 1) % this.orientations.length;
-        return new Tetromino(this.orientations[next], this.orientations, next);
+        return new Tetromino(this.orientations, next);
     }
 
     rotateLeft() {
         const len = this.orientations.length;
         const next = (this.index - 1 + len) % len;
-        return new Tetromino(this.orientations[next], this.orientations, next);
+        return new Tetromino(this.orientations, next);
     }
 
     toString()    { return this.shape.toString(); }
