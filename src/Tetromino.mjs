@@ -38,11 +38,14 @@ export class Tetromino {
 }
 
 class Tetromino1 {
-  static T_SHAPE = new Tetromino1([".T.\nTTT\n...", ".T.\n.TT\n.T.", "...\nTTT\n.T.", ".T.\nTT.\n.T."], 0);
-  static I_SHAPE = new Tetromino1(["...../...../IIII./...../.....", "..I../..I../..I../..I../....."], 0);
-  static O_SHAPE = new Tetromino1([".OO\n.OO\n..."], 0);
+    static T_SHAPE = new Tetromino1([".T.\nTTT\n...", ".T.\n.TT\n.T.", "...\nTTT\n.T.", ".T.\nTT.\n.T."], 0);
+    static I_SHAPE = new Tetromino1(["...../...../IIII./...../.....", "..I../..I../..I../..I../....."], 0);
+    static O_SHAPE = new Tetromino1([".OO\n.OO\n..."], 0);
 
-  constructor(orientations, index) { this.orientations = orientations; this.index = index };
+    constructor(orientations, index) {
+        this.orientations = orientations;
+        this.index = index;
+    };
 
   rotateRight() { return new Tetromino1(this.orientations, (this.index + 1) % this.orientations.length); }
   rotateLeft()  { return new Tetromino1(this.orientations, (this.index - 1 + this.orientations.length) % this.orientations.length); }
