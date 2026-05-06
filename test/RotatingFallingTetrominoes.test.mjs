@@ -9,4 +9,18 @@ describe("Rotating falling tetrominoes", () => {
     beforeEach(() => {
         board = new Board(10, 6);
     });
+
+    test("a falling tetromino can be rotated right", () => {
+        board.drop(Tetromino.T_SHAPE);
+        board.rotateRight();
+
+        expect(board.toString()).to.equalShape(
+            `....T.....
+             ....TT....
+             ....T.....
+             ..........
+             ..........
+             ..........`
+        );
+    });
 })
