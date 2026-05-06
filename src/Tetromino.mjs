@@ -26,15 +26,6 @@ export class Tetromino {
         }
         this.orientations = [...seen.values()];
         this.index = 0;
-        function realign(rotated) {
-            const cube = rotated.cube.map(r => [...r]);
-            if (rotated.size === 3 && cube[0][0] !== '.')
-                cube.forEach(r => { r.pop(); r.unshift('.'); });
-            if (rotated.size === 3 && cube[2][2] !== '.' && cube[0][2] === '.')
-                cube.push(cube.shift());
-            
-            return new RotatingShape({ size: rotated.size, cube });
-        }
     }
 
     static from(shape) {
