@@ -37,7 +37,6 @@ export class Board {
         }
       }
       this.fallingFlag = true;
-      this.tetromino.location = { x, y: 0 };
       this.fallingPos = { x, y: 0 }
     }else{
       throw "already falling";
@@ -64,26 +63,24 @@ export class Board {
         this.board[i][j] = '.';
       }
     }
-    this.tetromino.location.y += 1;
     this.fallingPos.y += 1;
   }
 
   moveLeft() {
-    let leftEdge = this.tetromino.location.x;
+    let leftEdge = this.fallingPos.x;
     if(leftEdge === 0) return;
 
-    let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+    let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
       if(this.board[i][leftEdge - 1] !== '.') return;
     }
 
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
-      for (let j = this.tetromino.location.x; j <= this.tetromino.location.x + this.tetromino.width - 1; j++) {
+      for (let j = this.fallingPos.x; j <= this.fallingPos.x + this.tetromino.width - 1; j++) {
         this.board[i][j - 1] = this.board[i][j];
         this.board[i][j] = '.';
       }
     }
-    this.tetromino.location.x -= 1;
     this.fallingPos.x -= 1;
   }
 
@@ -102,7 +99,6 @@ export class Board {
         this.board[i][j] = '.';
       }
     }
-    this.tetromino.location.x += 1;
     this.fallingPos.x += 1;
   }
 
