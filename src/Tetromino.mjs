@@ -30,7 +30,7 @@ export class Tetromino {
         ".OO\n.OO\n...",
     ]);
 
-    constructor(shape) {
+    constructor(shape, orientations, index = 0) {
         if (shape instanceof Tetromino) shape = shape.shape;
         this.shape = shape instanceof RotatingShape
             ? shape
@@ -40,6 +40,12 @@ export class Tetromino {
             .filter(row => [...row].some(cell => cell !== '.'));
         this.width = this.rows[0].length;
         this.height = this.rows.length;
+
+        if (orientations) {
+            this.orientations = orientations;
+            this.index = index;
+            return;
+        }
 
         const seen = new Map();
         let cur = this.shape;
