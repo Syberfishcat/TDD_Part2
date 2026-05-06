@@ -33,6 +33,7 @@
     "test": "vitest run",
     "autotest": "vitest watch",
     "format": "prettier --write .",
-    "lint": "tsc"
+    "lint": "tsc",
+    "refactor": "git add . && git commit -m 'refactor' && git push"
   }
 }
