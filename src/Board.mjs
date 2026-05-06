@@ -45,13 +45,13 @@ export class Board {
   }
 
   moveDown() {
-    let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+    let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
     if(bottomEdge === this.height - 1) {
       this.fallingFlag = false;
       return;
     }
 
-    for (let j = this.tetromino.location.x; j <= this.tetromino.location.x + this.tetromino.width - 1; j++) {
+    for (let j = this.fallingPos.x; j <= this.fallingPos.x + this.tetromino.width - 1; j++) {
       if(this.board[bottomEdge + 1][j] !== '.') {
         this.fallingFlag = false;
         return;
@@ -59,7 +59,7 @@ export class Board {
     }
 
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
-      for (let j = this.tetromino.location.x; j <= this.tetromino.location.x + this.tetromino.width - 1; j++) {
+      for (let j = this.fallingPos.x; j <= this.fallingPos.x + this.tetromino.width - 1; j++) {
         this.board[i + 1][j] = this.board[i][j];
         this.board[i][j] = '.';
       }
@@ -84,20 +84,20 @@ export class Board {
       }
     }
     this.tetromino.location.x -= 1;
-    this.fallingPos.y -= 1;
+    this.fallingPos.x -= 1;
   }
 
   moveRight() {
-    let rightEdge = this.tetromino.location.x + this.tetromino.width - 1;
+    let rightEdge = this.fallingPos.x + this.tetromino.width - 1;
     if(rightEdge === this.width - 1) return;
 
-    let bottomEdge = this.tetromino.location.y + this.tetromino.height - 1;
+    let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
       if(this.board[i][rightEdge + 1] !== '.') return;
     }
 
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
-      for (let j = this.tetromino.location.x + this.tetromino.width - 1; j >= this.tetromino.location.x; j--) {
+      for (let j = this.fallingPos.x + this.tetromino.width - 1; j >= this.fallingPos.x; j--) {
         this.board[i][j + 1] = this.board[i][j];
         this.board[i][j] = '.';
       }
