@@ -13,7 +13,6 @@ export class Board {
     this.board = Array.from({ length: height }, () => new Array(width).fill('.'));
     this.frozen = Array.from({ length: height }, () => new Array(width).fill('.'));
     this.fallingPos = null;
-    this.fallingPos = null;
   }
 
   toString() {
