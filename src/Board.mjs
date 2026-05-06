@@ -117,17 +117,10 @@ export class Board {
     this.tetromino = this.tetromino.rotateRight();
     this.doRotate(this.tetromino);
   }
-  
+
   rotateLeft() {
     this.tetromino = this.tetromino.rotateLeft();
-    let fallingXPos = this.fallingPos.x;
-    let fallingYPos = this.fallingPos.y;
-    let fallingSize = this.tetromino.shape.size;
-    for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
-      for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
-        this.board[y][x] = this.tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];
-      }
-    }
+    this.doRotate(this.tetromino);
   }
 
   tick() {
