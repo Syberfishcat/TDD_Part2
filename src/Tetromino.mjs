@@ -2,9 +2,16 @@ import { RotatingShape } from "./RotatingShape.mjs";
 
 function realign(rotated) {
     const cube = rotated.cube.map(r => [...r]);
-
+    if (rotated.size === 3) {
+        if (cube[2][1] === 'O') cube.push(cube.shift());
+    }
+    if (rotated.size === 5) {
+        if (cube[4][2] === 'I') cube.push(cube.shift());
+        if (cube[2][4] === 'I') cube.forEach(r => { r.shift(); r.push('.'); });
+    }
     return new RotatingShape({ size: rotated.size, cube });
 }
+
 
 export class Tetromino {
     static T_SHAPE = new Tetromino(`.T.\nTTT\n...`);
