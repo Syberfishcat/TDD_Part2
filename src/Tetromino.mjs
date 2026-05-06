@@ -22,7 +22,7 @@ export class Tetromino {
         let cur = this.shape;
         while (!seen.has(cur.toString())) {
             seen.set(cur.toString(), cur);
-            cur = realign(cur.rotateRight());
+            cur = cur.rotateRight();
         }
         this.orientations = [...seen.values()];
         this.index = 0;
