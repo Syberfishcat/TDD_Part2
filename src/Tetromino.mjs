@@ -46,15 +46,6 @@ export class Tetromino {
             this.index = index;
             return;
         }
-
-        const seen = new Map();
-        let cur = this.shape;
-        while (!seen.has(cur.toString())) {
-            seen.set(cur.toString(), cur);
-            cur = realign(cur.rotateRight());
-        }
-        this.orientations = [...seen.values()];
-        this.index = 0;
     }
 
     static fromOrientations(orientations) {
