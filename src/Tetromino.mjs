@@ -1,10 +1,7 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
-    static T_SHAPE = RotatingShape.fromString(
-        `.T.
-         TTT
-         ...`);
+    static T_SHAPE = new Tetromino(`.T.\nTTT\n...`);
 
     static I_SHAPE = RotatingShape.fromString(
       `.....
@@ -19,8 +16,9 @@ export class Tetromino {
        .OO
        ...`
     );
-    
+
     constructor(shape) {
+        if (shape instanceof Tetromino) shape = shape.shape;
         this.shape = shape instanceof RotatingShape
             ? shape
             : RotatingShape.fromString(shape);
