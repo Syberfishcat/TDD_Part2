@@ -45,6 +45,6 @@ class Tetromino1 {
   constructor(orientations, index) { this.orientations = orientations; this.index = index };
 
   rotateRight() { return new Tetromino1(this.orientations, (this.index + 1) % this.orientations.length); }
-  rotateLeft()  { return new Tetromino1(this.orientations, (this.index - 1 + n) % n); }
+  rotateLeft()  { return new Tetromino1(this.orientations, (this.index - 1 + this.orientations.length) % this.orientations.length); }
   toString()    { return this.orientations[this.index]; }
 }
