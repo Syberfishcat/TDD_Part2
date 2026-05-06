@@ -41,6 +41,10 @@ export class Tetromino {
         this.index = 0;
     }
 
+    static fromOrientations(orientations) {
+        return new Tetromino(orientations[0]);
+    }
+
     static from(shape) {
         return new Tetromino(shape);
     }
