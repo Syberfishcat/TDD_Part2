@@ -43,6 +43,16 @@ export class Board {
     }
   }
 
+  paintTetromino(tetromino) {
+    let canvas = structuredClone(this.frozen);
+    let position = this.board.fallingPos;
+    let i = 0;
+    while(i < tetromino.shape.size) {
+      i++;
+    }
+    this.frozen = canvas;
+  }
+
   moveDown() {
     let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
     if(bottomEdge === this.height - 1) {
