@@ -12,7 +12,6 @@ export class Board {
     this.height = height;
     this.board = Array.from({ length: height }, () => new Array(width).fill('.'));
     this.frozen = Array.from({ length: height }, () => new Array(width).fill('.'));
-    this.fallingPos = null;
   }
 
   toString() {
@@ -103,10 +102,15 @@ export class Board {
   }
 
   rotateRight() {
-    console.log(this.tetromino)
-    console.log(this.tetromino.rotateRight());
-
-  }
+    let location = this.tetromino.location;
+    this.tetromino = this.tetromino.rotateRight();
+    this.tetromino.location = location;
+    let fallingXPos = this.tetromino.location.x;
+    let fallingYPos = this.tetromino.location.y;
+    let fallingSize = this.tetromino.shape.size;
+    for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
+      for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
+        this.board[y][x] = this.tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];}}}
 
   tick() {
     this.moveDown();
