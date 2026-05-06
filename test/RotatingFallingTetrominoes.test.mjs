@@ -4,6 +4,12 @@ import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 import { RotatingShape } from "../src/RotatingShape.mjs";
 
+function fallToBottom(board) {
+  for (let i = 0; i < 10; i++) {
+    board.tick();
+  }
+}
+
 describe("Rotating falling tetrominoes", () => {
     let board;
     beforeEach(() => {
