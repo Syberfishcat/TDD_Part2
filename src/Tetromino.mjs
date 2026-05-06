@@ -41,12 +41,10 @@ export class Tetromino {
         this.width = this.rows[0].length;
         this.height = this.rows.length;
 
-        if (orientations) {
-            this.orientations = orientations;
-            this.index = index;
-            return;
-        }
+        this.orientations = orientations || [this.shape];
+        this.index = index;
     }
+
 
     static fromOrientations(orientations) {
         const shapes = orientations.map(s => RotatingShape.fromString(s));
