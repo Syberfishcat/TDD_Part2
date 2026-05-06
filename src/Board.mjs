@@ -12,6 +12,7 @@ export class Board {
     this.height = height;
     this.board = Array.from({ length: height }, () => new Array(width).fill('.'));
     this.frozen = Array.from({ length: height }, () => new Array(width).fill('.'));
+    this.fallingPos = null;
   }
 
   toString() {
@@ -37,6 +38,7 @@ export class Board {
       }
       this.fallingFlag = true;
       this.tetromino.location = { x, y: 0 };
+      this.fallingPos = { x, y: 0 }
     }else{
       throw "already falling";
     }
@@ -63,6 +65,7 @@ export class Board {
       }
     }
     this.tetromino.location.y += 1;
+    this.fallingPos.y += 1;
   }
 
   moveLeft() {
@@ -81,6 +84,7 @@ export class Board {
       }
     }
     this.tetromino.location.x -= 1;
+    this.fallingPos.y -= 1;
   }
 
   moveRight() {
@@ -99,14 +103,13 @@ export class Board {
       }
     }
     this.tetromino.location.x += 1;
+    this.fallingPos.x += 1;
   }
 
   rotateRight() {
-    let location = this.tetromino.location;
     this.tetromino = this.tetromino.rotateRight();
-    this.tetromino.location = location;
-    let fallingXPos = this.tetromino.location.x;
-    let fallingYPos = this.tetromino.location.y;
+    let fallingXPos = this.fallingPos.x;
+    let fallingYPos = this.fallingPos.y;
     let fallingSize = this.tetromino.shape.size;
     for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
       for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
