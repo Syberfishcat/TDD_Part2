@@ -5,7 +5,7 @@ export class Tetromino {
         `.T.
          TTT
          ...`);
-         
+
     static I_SHAPE = RotatingShape.fromString(
       `.....
        .....
@@ -13,6 +13,13 @@ export class Tetromino {
        .....
        .....`
     );
+
+    static O_SHAPE = RotatingShape.fromString(
+      `.OO
+       .OO
+       ...`
+    );
+    
     constructor(shape) {
         this.shape = shape instanceof RotatingShape
             ? shape
