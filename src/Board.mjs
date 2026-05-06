@@ -25,7 +25,8 @@ export class Board {
   }
 
   drop(symbol) {
-    this.tetromino = new Tetromino(symbol);
+    this.tetromino = symbol instanceof Tetromino ? symbol : Tetromino.fromSymbol(symbol);
+    
     if(!this.fallingFlag){
       const x = parseInt((this.width - this.tetromino.width) / 2);
       for(let i = 0; i < this.tetromino.height; i++) {
