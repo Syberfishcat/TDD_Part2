@@ -47,7 +47,7 @@ class Tetromino1 {
         this.index = index;
     };
 
-  rotateRight() { return new Tetromino1(this.orientations, (this.index + 1) % this.orientations.length); }
-  rotateLeft()  { return new Tetromino1(this.orientations, (this.index - 1 + this.orientations.length) % this.orientations.length); }
-  toString()    { return this.orientations[this.index]; }
+    rotateRight() { return new Tetromino1(this.orientations, (this.index + 1) % this.orientations.length); }
+    rotateLeft()  { return new Tetromino1(this.orientations, (this.index - 1 + this.orientations.length) % this.orientations.length); }
+    toString()    { return this.orientations[this.index]; }
 }
