@@ -59,8 +59,3 @@ export class Tetromino {
 
 }
 
-class Tetromino1 {
-    static T_SHAPE = new Tetromino1([".T.\nTTT\n...", ".T.\n.TT\n.T.", "...\nTTT\n.T.", ".T.\nTT.\n.T."], 0);
-    static I_SHAPE = new Tetromino1([".....\n.....\nIIII.\n.....\n.....", "..I../..I../..I../..I../....."], 0);
-    static O_SHAPE = new Tetromino1([".OO\n.OO\n..."], 0);
-}
