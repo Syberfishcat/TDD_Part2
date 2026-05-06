@@ -25,7 +25,7 @@ export class Board {
   }
 
   drop(symbol) {
-    this.tetromino = Tetromino.from(symbol);
+    this.tetromino = new Tetromino(symbol);
     if(!this.fallingFlag){
       const x = parseInt((this.width - this.tetromino.width) / 2);
       for(let i = 0; i < this.tetromino.height; i++) {
@@ -95,7 +95,14 @@ export class Board {
         this.board[i][j + 1] = this.board[i][j];
         this.board[i][j] = '.';
       }
-    }this.tetromino.location.x += 1;
+    }
+    this.tetromino.location.x += 1;
+  }
+
+  rotateRight() {
+    console.log(this.tetromino)
+    console.log(this.tetromino.rotateRight());
+
   }
 
   tick() {
