@@ -30,8 +30,11 @@ export class RotatingShape {
             }
         }
         if (this.size === 5) {
-            if (newCube[4][2] === 'I') newCube.push(newCube.shift()); 
+            if (newCube[4][2] === 'I') newCube.push(newCube.shift());
             if (newCube[2][4] === 'I') newCube.forEach(r => { r.shift(); r.push('.'); });
+        }
+        if (this.size === 3) {
+            if (newCube[2][1] === 'O') newCube.push(newCube.shift());
         }
         return new RotatingShape({ size: this.size, cube: newCube });
     }
