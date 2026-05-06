@@ -47,6 +47,10 @@ export class RotatingShape {
                 newCube[this.size - 1 - j][i] = this.cube[i][j];
             }
         }
+
+        if (this.size === 3) {
+            if (newCube[0][0] === 'O') newCube.forEach(r => { r.pop(); r.unshift('.'); });
+        }
         
         if (this.size === 5) {
             if (newCube[4][2] === 'I') newCube.push(newCube.shift());
