@@ -41,10 +41,9 @@ export class RotatingShape {
             }
         }
         
-        if(this.size === 5){
+        if (this.size === 5) {
             while (newCube[0].every(cell => cell === '.')) {
-                newCube.shift();
-                newCube.push(new Array(this.size).fill('.'));
+                newCube.push(newCube.shift());
             }
         }
 
