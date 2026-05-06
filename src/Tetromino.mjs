@@ -38,7 +38,8 @@ export class Tetromino {
     }
 
     static fromSymbol(symbol) {
-        return new Tetromino(new Array(RotatingShape.fromString(symbol)));
+        let orientations = new Array(RotatingShape.fromString(symbol));
+        return new Tetromino(orientations[0], orientations);
     }
 
     rotateRight() {
