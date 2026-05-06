@@ -38,10 +38,6 @@ export class Tetromino {
         return new Tetromino(shapes[0], shapes);
     }
 
-    static from(shape) {
-        return new Tetromino(shape);
-    }
-
     rotateRight() {
         const next = (this.index + 1) % this.orientations.length;
         return new Tetromino(this.orientations[next], this.orientations, next);
