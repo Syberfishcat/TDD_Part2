@@ -10,7 +10,7 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.board = Array.from({ length: height }, () => new Array(width).fill('.'))
+    this.board = Array.from({ length: height }, () => new Array(width).fill('.'));
   }
 
   toString() {
