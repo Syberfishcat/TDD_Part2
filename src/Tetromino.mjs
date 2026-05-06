@@ -10,8 +10,8 @@ export class Tetromino {
         this.height = this.rows.length;
     }
 
-    static from(symbol) {
-        return new Tetromino(symbol)
+    static from(shape) {
+        return new Tetromino(shape);
     }
 
 }
