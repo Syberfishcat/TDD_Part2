@@ -32,7 +32,6 @@ export class Tetromino {
         this.index = index;
     }
 
-
     static fromOrientations(orientations) {
         const shapes = orientations.map(s => RotatingShape.fromString(s));
         return new Tetromino(shapes[0], shapes);
