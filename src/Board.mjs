@@ -30,15 +30,13 @@ export class Board {
   }
 
   drop(symbol) {
-    if(!this.fallingFlag){
-      this.tetromino = symbol instanceof Tetromino ? symbol : Tetromino.fromSymbol(symbol);
-      const x = parseInt((this.width - this.tetromino.width) / 2);
-      this.fallingFlag = true;
-      this.fallingPos = { x, y: 0 }
-      this.paintTetromino();
-    }else{
-      throw "already falling";
-    }
+    if (this.fallingFlag) throw "already falling";
+    this.tetromino = symbol instanceof Tetromino ? symbol : Tetromino.fromSymbol(symbol);
+    const size = this.tetromino.shape.size;
+    const x = Math.floor((this.width - size) / 2);
+    const firstRow = this.tetromino.shape.cube.findIndex(row => row.some(c => c !== '.'));
+    this.fallingPos = { x, y: 0 - firstRow };
+    this.fallingFlag = true;
   }
 
   paintTetromino() {

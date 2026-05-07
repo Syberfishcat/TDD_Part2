@@ -82,7 +82,7 @@ describe("Rotating falling tetrominoes", () => {
         })
     })
 
-    describe.skip("I shape", () => {
+    describe("I shape", () => {
         test("a falling tetromino can be rotated right", () => {
             board.drop(Tetromino.I_SHAPE);
             board.tick();
