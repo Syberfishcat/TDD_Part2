@@ -27,6 +27,13 @@ export class Tetromino {
         ".Z.\nZZ.\nZ..",
     ]);
 
+    static L_SHAPE = Tetromino.fromOrientations([
+        "...\nLLL\nL..",
+        "LL.\n.L.\n.L.",
+        "..L\nLLL\n...",
+        ".L.\n.L.\n.LL",
+    ]);
+
     constructor(orientations, index = 0) {
         this.shape = orientations[index];
         this.rows = this.shape.cube
