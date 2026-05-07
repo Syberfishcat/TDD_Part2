@@ -110,7 +110,6 @@ export class Board {
     this.fallingPos.x += 1;
   }
 
-
   detectCollision(t) {
     const { x, y } = this.fallingPos;
     for (let r = 0; r < t.shape.size; r++) {
