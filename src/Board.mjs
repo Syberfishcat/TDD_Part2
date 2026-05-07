@@ -84,6 +84,15 @@ export class Board {
     this.fallingPos.y += 1;
   }
 
+  moveDown1() {
+    this.fallingPos.y++;
+    if (!this.detectCollision(this.tetromino)) {
+      this.fallingPos.y--;
+      this.paintFrozen(this.tetromino);
+      this.fallingFlag = false;
+    }
+  }
+
   moveLeft() {
     let leftEdge = this.fallingPos.x;
 
