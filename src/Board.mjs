@@ -17,6 +17,9 @@ export class Board {
 
   toString() {
     let str = '';
+    // if(this.tetromino) {
+    //   this.paintTetromino();
+    // }
     this.board.forEach(h => {
       h.forEach(item => {
         str += item;
@@ -27,19 +30,18 @@ export class Board {
   }
 
   drop(symbol) {
-    this.tetromino = symbol instanceof Tetromino ? symbol : Tetromino.fromSymbol(symbol);
-    
     if(!this.fallingFlag){
+      this.tetromino = symbol instanceof Tetromino ? symbol : Tetromino.fromSymbol(symbol);
       const x = parseInt((this.width - this.tetromino.width) / 2);
       this.fallingFlag = true;
       this.fallingPos = { x, y: 0 }
-      this.paintBoard();
+      this.paintTetromino();
     }else{
       throw "already falling";
     }
   }
 
-  paintBoard() {
+  paintTetromino() {
     let fallingXPos = this.fallingPos.x;
     let fallingYPos = this.fallingPos.y;
     let fallingSize = this.tetromino.shape.size;
