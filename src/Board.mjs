@@ -42,11 +42,16 @@ export class Board {
   }
 
   paintTetromino() {
-    this.board = this.frozen.map(row => [...row]);
+    this.board = structuredClone(this.frozen);
     const { x, y } = this.fallingPos;
-    this.tetromino.shape.cube.forEach((row, r) => 
-      row.forEach((cell, c) => { if (cell !== '.') this.board[y + r][x + c] = cell; })
-    );
+    const cube = this.tetromino.shape.cube;
+    for (let r = 0; r < cube.length; r++) {
+      for (let c = 0; c < cube[r].length; c++) {
+        if (cube[r][c] !== '.') {
+          this.board[y + r][x + c] = cube[r][c];
+        }
+      }
+    }
   }
 
   paintFrozen(tetromino) {
@@ -73,7 +78,7 @@ export class Board {
         return;
       }
     }
-    
+
     this.fallingPos.y += 1;
   }
 
