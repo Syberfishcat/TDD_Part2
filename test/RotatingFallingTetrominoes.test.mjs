@@ -81,4 +81,20 @@ describe("Rotating falling tetrominoes", () => {
             );
         })
     })
+
+    describe("I shape", () => {
+        test("a falling tetromino can be rotated right", () => {
+            board.drop(Tetromino.I_SHAPE);
+            board.rotateRight();
+    
+            expect(board.toString()).to.equalShape(
+                `....I.....
+                 ....I.....
+                 ....I.....
+                 ....I.....
+                 ..........
+                 ..........`
+            );
+        });
+    })
 })
