@@ -56,6 +56,14 @@ export class Board {
     }
   }
 
+  paintTetromino1() {
+    this.board = this.frozen.map(row => [...row]);
+    const { x, y } = this.fallingPos;
+    this.tetromino.shape.cube.forEach((row, r) => 
+      row.forEach((cell, c) => { if (cell !== '.') this.board[y + r][x + c] = cell; })
+    );
+  }
+
   paintFrozen(tetromino) {
     const { x, y } = this.fallingPos;
     tetromino.shape.cube.forEach((row, r) => {
