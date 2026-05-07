@@ -115,6 +115,9 @@ export class Board {
   rotateLeft() {
     const next = this.tetromino.rotateLeft();
     const oldX = this.fallingPos.x;
+    const oldY = this.fallingPos.y;
+    
+    if(oldY < 0) this.fallingPos.y = 0;
     for (let dx of [0, -1, 1, -2, 2]) {
       this.fallingPos.x = oldX + dx;
       if (this.detectCollision(next)) {
