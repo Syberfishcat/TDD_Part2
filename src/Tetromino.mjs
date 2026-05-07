@@ -2,19 +2,19 @@ import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
     static T_SHAPE = Tetromino.fromOrientations([
-        ".T.\nTTT\n...",
-        ".T.\n.TT\n.T.",
         "...\nTTT\n.T.",
         ".T.\nTT.\n.T.",
+        ".T.\nTTT\n...",
+        ".T.\n.TT\n.T.",
     ]);
 
     static I_SHAPE = Tetromino.fromOrientations([
-        ".....\n.....\nIIII.\n.....\n.....",
-        "..I..\n..I..\n..I..\n..I..\n.....",
+        "....\nIIII\n....\n....",
+        "..I.\n..I.\n..I.\n..I.",
     ]);
 
     static O_SHAPE = Tetromino.fromOrientations([
-        ".OO\n.OO\n...",
+        "OO\nOO",
     ]);
 
     constructor(orientations, index = 0) {
