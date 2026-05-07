@@ -69,7 +69,6 @@ export class Board {
 
   moveDown() {
     let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
-
     if(bottomEdge === this.height - 1) {
       this.fallingFlag = false;
       this.paintFrozen(this.tetromino);
@@ -82,7 +81,6 @@ export class Board {
         return;
       }
     }
-
     this.fallingPos.y += 1;
   }
 
