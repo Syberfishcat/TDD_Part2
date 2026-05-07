@@ -57,16 +57,12 @@ export class Board {
   }
 
   paintFrozen(tetromino) {
-    let canvas = structuredClone(this.frozen);
-    let fallingXPos = this.fallingPos.x;
-    let fallingYPos = this.fallingPos.y;
-    let fallingSize = tetromino.height;
-    for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
-      for(let x = fallingXPos; x < fallingXPos + tetromino.shape.size; x++) {
-        canvas[y][x] = tetromino.shape.cube.flat()[(y - fallingYPos) * tetromino.shape.size + x - fallingXPos];
-      }
-    }
-    this.frozen = canvas;
+    const { x, y } = this.fallingPos;
+    tetromino.shape.cube.forEach((row, r) => {
+      row.forEach((cell, c) => {
+        if (cell !== '.') this.frozen[y + r][x + c] = cell;
+      });
+    });
   }
 
   moveDown() {
