@@ -67,15 +67,6 @@ export class Board {
     }
   }
 
-  moveDown1() {
-    let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
-    if(bottomEdge === this.height - 1) {
-      this.fallingFlag = false;
-      this.paintFrozen(this.tetromino);
-      return;
-    }
-  }
-
   moveDown() {
     this.fallingPos.y++;
     if (!this.detectCollision(this.tetromino)) {
