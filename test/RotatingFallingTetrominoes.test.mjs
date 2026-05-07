@@ -134,5 +134,25 @@ describe("Rotating falling tetrominoes", () => {
                  ..IIII....`
             );
         })
+
+        test("wall kick: rotated against the left wall, moves right", () => {
+            board.drop(Tetromino.I_SHAPE);
+            board.rotateRight();
+            board.tick();
+            board.tick();
+            board.moveLeft();
+            board.moveLeft();
+            board.moveLeft();
+            board.rotateRight();
+
+            expect(board.toString()).to.equalShape(
+                `..........
+                 ..........
+                 IIII......
+                 ..........
+                 ..........
+                 ..........`
+            );
+        })
     })
 })
