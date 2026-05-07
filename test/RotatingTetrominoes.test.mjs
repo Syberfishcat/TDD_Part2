@@ -111,3 +111,35 @@ describe("The O shape", () => {
   });
 });
 
+describe("The S shape", () => {
+  const shape = Tetromino.S_SHAPE;
+
+  test("initial orientation", () => {
+    expect(shape.toString()).to.equalShape(
+      `...
+       .SS
+       SS.`
+    );
+  });
+
+  test("can be rotated right/clockwise", () => {
+    expect(shape.rotateRight().toString()).to.equalShape(
+      `S..
+       SS.
+       .S.`
+    );
+  });
+
+  test("can be rotated left/counter-clockwise", () => {
+    expect(shape.rotateLeft().toString()).to.equalShape(
+      `S..
+       SS.
+       .S.`
+    );
+  });
+
+  test("has 2 distinct orientations", () => {
+    expect(distinctOrientations(shape).size).to.equal(2);
+  });
+});
+
