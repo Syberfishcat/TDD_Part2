@@ -49,8 +49,8 @@ export class Board {
     let fallingYPos = this.fallingPos.y;
     let fallingSize = tetromino.height;
     for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
-      for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
-        canvas[y][x] = tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];
+      for(let x = fallingXPos; x < fallingXPos + tetromino.shape.size; x++) {
+        canvas[y][x] = tetromino.shape.cube.flat()[(y - fallingYPos) * tetromino.shape.size + x - fallingXPos];
       }
     }
     this.frozen = canvas;
