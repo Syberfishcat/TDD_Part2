@@ -179,6 +179,7 @@ describe("Rotating falling tetrominoes", () => {
                  ..........`
             );
         })
+
         test("wall kick: rotated against the top wall, moves down", () => {
             board.drop(Tetromino.I_SHAPE);
             board.rotateLeft();
@@ -190,6 +191,25 @@ describe("Rotating falling tetrominoes", () => {
                  ....I.....
                  ..........
                  ..........`
+            );
+        })
+
+        test("wall kick: rotated against the bottom wall, moves up", () => {
+            board.drop(Tetromino.I_SHAPE);
+            board.tick();
+            board.tick();
+            board.tick();
+            board.tick();
+            board.tick();
+            board.rotateLeft();
+
+            expect(board.toString()).to.equalShape(
+                `..........
+                 ..........
+                 ....I.....
+                 ....I.....
+                 ....I.....
+                 ....I.....`
             );
         })
     })
