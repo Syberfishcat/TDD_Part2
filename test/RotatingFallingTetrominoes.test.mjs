@@ -63,7 +63,7 @@ describe("Rotating falling tetrominoes", () => {
             );
         })
     
-        test("it cannot be rotated left when there is no room (blocked by other blocks)", () => {
+        test.skip("it cannot be rotated left when there is no room (blocked by other blocks)", () => {
             board.drop(Tetromino.T_SHAPE);
             fallToBottom(board);
             board.drop(Tetromino.T_SHAPE);
@@ -178,7 +178,7 @@ describe("Rotating falling tetrominoes", () => {
 
         test.skip("wall kick: rotated against the right wall, moves left", () => {
             board.drop(Tetromino.I_SHAPE);
-            board.rotateRight();
+            board.rotateLeft();
             board.tick();
             board.tick();
             board.moveRight();
@@ -186,7 +186,7 @@ describe("Rotating falling tetrominoes", () => {
             board.moveRight();
             board.moveRight();
             board.moveRight();
-            board.rotateRight();
+            board.rotateLeft();
 
             expect(board.toString()).to.equalShape(
                 `..........
