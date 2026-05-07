@@ -60,12 +60,12 @@ export class Board {
 
   moveDown() {
     let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
+
     if(bottomEdge === this.height - 1) {
       this.fallingFlag = false;
       this.paintFrozen(this.tetromino);
       return;
     }
-
     for (let j = this.fallingPos.x; j <= this.fallingPos.x + this.tetromino.width - 1; j++) {
       if(this.board[bottomEdge + 1][j] !== '.') {
         this.fallingFlag = false;
@@ -73,12 +73,13 @@ export class Board {
         return;
       }
     }
+    
     this.fallingPos.y += 1;
   }
 
   moveLeft() {
     let leftEdge = this.fallingPos.x;
-    
+
     if(leftEdge === 0) return;
     let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
@@ -90,8 +91,8 @@ export class Board {
 
   moveRight() {
     let rightEdge = this.fallingPos.x + this.tetromino.width - 1;
-    if(rightEdge === this.width - 1) return;
 
+    if(rightEdge === this.width - 1) return;
     let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
       if(this.board[i][rightEdge + 1] !== '.') return;
