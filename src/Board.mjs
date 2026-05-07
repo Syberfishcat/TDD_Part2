@@ -74,14 +74,6 @@ export class Board {
       this.paintFrozen(this.tetromino);
       return;
     }
-    for (let j = this.fallingPos.x; j <= this.fallingPos.x + this.tetromino.width - 1; j++) {
-      if(this.board[bottomEdge + 1][j] !== '.') {
-        this.fallingFlag = false;
-        this.paintFrozen(this.tetromino);
-        return;
-      }
-    }
-    this.fallingPos.y += 1;
   }
 
   moveDown() {
