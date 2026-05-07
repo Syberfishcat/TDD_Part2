@@ -91,6 +91,7 @@ export class Board {
   detectCollision(t) {
     let { x, y } = this.fallingPos;
     if (x < 0) x = 0;
+    if (x + t.shape.size > this.width) x = this.width - t.shape.size + 1;
     for (let r = 0; r < t.shape.size; r++) {
       for (let c = 0; c < t.shape.size; c++) {
         if (t.shape.cube[r][c] === '.') continue;
