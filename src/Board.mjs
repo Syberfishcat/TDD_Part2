@@ -136,19 +136,13 @@ export class Board {
   }
 
   rotateRight() {
-    let tetromino = this.tetromino.rotateRight();
-    if(this.detectCollision(tetromino)) {
-      this.tetromino = tetromino;
-      this.doRotate(this.tetromino);
-    }
+    const next = this.tetromino.rotateRight();
+    if (this.detectCollision(next)) this.tetromino = next;
   }
 
   rotateLeft() {
-    let tetromino = this.tetromino.rotateLeft();
-    if(this.detectCollision(tetromino)) {
-      this.tetromino = tetromino;
-      this.doRotate(this.tetromino);
-    }
+    const next = this.tetromino.rotateLeft();
+    if (this.detectCollision(next)) this.tetromino = next;
   }
 
   tick() {
