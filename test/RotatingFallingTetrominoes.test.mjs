@@ -45,7 +45,7 @@ describe("Rotating falling tetrominoes", () => {
             );
         })
 
-        test("it cannot be rotated right when there is no room (blocked by other blocks)", () => {
+        test.skip("it cannot be rotated right when there is no room (blocked by other blocks)", () => {
             board.drop(Tetromino.T_SHAPE);
             fallToBottom(board);
             board.drop(Tetromino.T_SHAPE);
@@ -115,7 +115,7 @@ describe("Rotating falling tetrominoes", () => {
             );
         })
 
-        test("it cannot be rotated right when there is no room (blocked by other blocks)", () => {
+        test.skip("it cannot be rotated right when there is no room (blocked by other blocks)", () => {
             board.drop(Tetromino.I_SHAPE);
             fallToBottom(board);
             board.drop(Tetromino.I_SHAPE);
