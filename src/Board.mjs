@@ -54,13 +54,17 @@ export class Board {
     }
   }
 
-  paintFrozen(tetromino) {
+  paintFrozen(t) {
     const { x, y } = this.fallingPos;
-    tetromino.shape.cube.forEach((row, r) => {
-      row.forEach((cell, c) => {
-        if (cell !== '.') this.frozen[y + r][x + c] = cell;
-      });
-    });
+    const cube = t.shape.cube;
+    for (let r = 0; r < cube.length; r++) {
+      for (let c = 0; c < cube[r].length; c++) {
+        const boardY = y + r;
+        if (cube[r][c] !== '.' && boardY >= 0) {
+          this.frozen[boardY][x + c] = cube[r][c];
+        }
+      }
+    }
   }
 
   moveDown() {
