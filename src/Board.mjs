@@ -17,8 +17,10 @@ export class Board {
 
   toString() {
     let str = '';
-    if(this.tetromino) {
+    if (this.fallingFlag) {
       this.paintTetromino();
+    } else {
+      this.board = structuredClone(this.frozen);
     }
     this.board.forEach(h => {
       h.forEach(item => {
@@ -66,6 +68,7 @@ export class Board {
   }
 
   moveDown() {
+    if (!this.fallingFlag) return;
     this.fallingPos.y++;
     if (!this.detectCollision(this.tetromino)) {
       this.fallingPos.y--;
