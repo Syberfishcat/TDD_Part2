@@ -41,7 +41,7 @@ export class Board {
     }
   }
 
-  paintTetromino() {
+  paintTetromino1() {
     let fallingXPos = this.fallingPos.x;
     let fallingYPos = this.fallingPos.y;
     let fallingSize = this.tetromino.shape.size;
@@ -56,7 +56,7 @@ export class Board {
     }
   }
 
-  paintTetromino1() {
+  paintTetromino() {
     this.board = this.frozen.map(row => [...row]);
     const { x, y } = this.fallingPos;
     this.tetromino.shape.cube.forEach((row, r) => 
