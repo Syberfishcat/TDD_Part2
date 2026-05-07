@@ -73,8 +73,16 @@ export class Board {
     if (!this.detectCollision(this.tetromino)) {
       this.fallingPos.y--;
       this.paintFrozen(this.tetromino);
+      this.clearLines();
       this.fallingFlag = false;
     }
+  }
+
+  clearLines() {
+    const kept = this.frozen.filter(row => row.some(c => c === '.'));
+    const cleared = this.height - kept.length;
+    const empty = Array.from({ length: cleared }, () => new Array(this.width).fill('.'));
+    this.frozen = [...empty, ...kept];
   }
 
   moveLeft() {
