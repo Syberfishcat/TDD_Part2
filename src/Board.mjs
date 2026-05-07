@@ -110,16 +110,6 @@ export class Board {
     this.fallingPos.x += 1;
   }
 
-  doRotate(tetromino) {
-    let fallingXPos = this.fallingPos.x;
-    let fallingYPos = this.fallingPos.y;
-    let fallingSize = tetromino.shape.size;
-    for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
-      for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
-        this.board[y][x] = tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];
-      }
-    }
-  }
 
   detectCollision(t) {
     const { x, y } = this.fallingPos;
