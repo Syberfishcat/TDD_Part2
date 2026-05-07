@@ -127,7 +127,7 @@ export class Board {
       }
     }
   }
-  
+
   detectCollision(tetromino) {
     let fallingXPos = this.fallingPos.x;
     let fallingYPos = this.fallingPos.y;
@@ -140,8 +140,11 @@ export class Board {
   }
 
   rotateRight() {
-    this.tetromino = this.tetromino.rotateRight();
-    this.doRotate(this.tetromino);
+    let tetromino = this.tetromino.rotateRight();
+    if(this.detectCollision(tetromino)) {
+      this.tetromino = tetromino;
+      this.doRotate(this.tetromino);
+    }
   }
 
   rotateLeft() {
