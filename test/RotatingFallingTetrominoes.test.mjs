@@ -119,9 +119,9 @@ describe("Rotating falling tetrominoes", () => {
 
         test("wall kick: rotated against the left wall, moves right", () => {
             board.drop(Tetromino.I_SHAPE);
+            board.tick();
+            board.tick();
             board.rotateRight();
-            board.tick();
-            board.tick();
             board.moveLeft();
             board.moveLeft();
             board.moveLeft();
@@ -139,9 +139,9 @@ describe("Rotating falling tetrominoes", () => {
 
         test("wall kick: rotated against the left wall, moves right, supplement", () => {
             board.drop(Tetromino.I_SHAPE);
+            board.tick();
+            board.tick();
             board.rotateRight();
-            board.tick();
-            board.tick();
             board.moveLeft();
             board.moveLeft();
             board.moveLeft();
@@ -158,11 +158,11 @@ describe("Rotating falling tetrominoes", () => {
             );
         })
 
-        test.skip("wall kick: rotated against the right wall, moves left", () => {
+        test("wall kick: rotated against the right wall, moves left", () => {
             board.drop(Tetromino.I_SHAPE);
+            board.tick();
+            board.tick();
             board.rotateLeft();
-            board.tick();
-            board.tick();
             board.moveRight();
             board.moveRight();
             board.moveRight();
