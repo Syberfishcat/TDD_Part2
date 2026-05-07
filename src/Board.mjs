@@ -127,7 +127,16 @@ export class Board {
       }
     }
   }
-
+  detectCollision(tetromino) {
+    let fallingXPos = this.fallingPos.x;
+    let fallingYPos = this.fallingPos.y;
+    for(let y = fallingYPos; y < fallingYPos + tetromino.height; y++) {
+      for(let x = fallingXPos; x < fallingXPos + tetromino.shape.size; x++) {
+        if(this.frozen[y][x] !== '.') return false;
+      }
+    }
+    return true;
+  }
   rotateRight() {
     this.tetromino = this.tetromino.rotateRight();
     this.doRotate(this.tetromino);
