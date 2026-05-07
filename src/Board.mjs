@@ -41,12 +41,6 @@ export class Board {
     }
   }
 
-  paintTetromino1() {
-    let fallingXPos = this.fallingPos.x;
-    let fallingYPos = this.fallingPos.y;
-    let fallingSize = this.tetromino.shape.size;
-  }
-
   paintTetromino() {
     this.board = this.frozen.map(row => [...row]);
     const { x, y } = this.fallingPos;
