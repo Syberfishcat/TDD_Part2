@@ -78,17 +78,11 @@ export class Board {
 
   moveLeft() {
     let leftEdge = this.fallingPos.x;
+    
     if(leftEdge === 0) return;
-
     let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
     for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
       if(this.board[i][leftEdge - 1] !== '.') return;
-    }
-    for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
-      for (let j = this.fallingPos.x; j <= this.fallingPos.x + this.tetromino.width - 1; j++) {
-        this.board[i][j - 1] = this.board[i][j];
-        this.board[i][j] = '.';
-      }
     }
 
     this.fallingPos.x -= 1;
