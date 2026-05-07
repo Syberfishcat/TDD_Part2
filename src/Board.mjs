@@ -47,9 +47,9 @@ export class Board {
     const cube = this.tetromino.shape.cube;
     for (let r = 0; r < cube.length; r++) {
       for (let c = 0; c < cube[r].length; c++) {
-        if (cube[r][c] !== '.') {
-          this.board[y + r][x + c] = cube[r][c];
-        }
+        const bY = y + r, bX = x + c;
+        const inBounds = bY >= 0 && bY < this.height && bX >= 0 && bX < this.width;
+        if (cube[r][c] !== '.' && inBounds) this.board[bY][bX] = cube[r][c];
       }
     }
   }
