@@ -43,7 +43,9 @@ export class Tetromino {
 
     constructor(orientations, index = 0) {
         this.shape = orientations[index];
-        this.rows = this.shape.cube
+        this.cube = this.shape.cube;
+        this.size = this.shape.size;
+        this.rows = this.cube
             .map(row => row.join(''))
             .filter(row => [...row].some(cell => cell !== '.'));
         this.width = this.rows[0].length;
