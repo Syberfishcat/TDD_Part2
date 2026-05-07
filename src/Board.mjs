@@ -43,7 +43,12 @@ export class Board {
     }
   }
 
+  paintBoard() {
+    let fallingXPos = this.fallingPos.x;
+    let fallingYPos = this.fallingPos.y;
+    let fallingSize = this.tetromino.shape.size;
 
+  }
 
   paintFrozen(tetromino) {
     let canvas = structuredClone(this.frozen);
