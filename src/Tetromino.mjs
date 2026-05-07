@@ -56,13 +56,16 @@ export class Tetromino {
     }
 
     static fromOrientations(orientations) {
-        const shapes = orientations.map(s => RotatingShape.fromString(s));
-        return new Tetromino(shapes);
+        return new Tetromino(orientations.map(Tetromino.parseShape));
     }
 
     static fromSymbol(symbol) {
-        let orientations = new Array(RotatingShape.fromString(symbol));
-        return new Tetromino(orientations);
+        return new Tetromino([Tetromino.parseShape(symbol)]);
+    }
+
+    static parseShape(str) {
+        const cube = str.trim().split('\n').map(row => [...row.trim()]);
+        return { cube, size: cube.length, toString: () => cube.map(r => r.join('')).join('\n') + '\n' };
     }
 
     rotateRight() {
