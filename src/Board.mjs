@@ -127,6 +127,7 @@ export class Board {
       }
     }
   }
+  
   detectCollision(tetromino) {
     let fallingXPos = this.fallingPos.x;
     let fallingYPos = this.fallingPos.y;
@@ -137,6 +138,7 @@ export class Board {
     }
     return true;
   }
+
   rotateRight() {
     this.tetromino = this.tetromino.rotateRight();
     this.doRotate(this.tetromino);
