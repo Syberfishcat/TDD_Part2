@@ -121,12 +121,15 @@ export class Board {
     }
   }
 
-  detectCollision(tetromino) {
-    let fallingXPos = this.fallingPos.x;
-    let fallingYPos = this.fallingPos.y;
-    for(let y = fallingYPos; y < fallingYPos + tetromino.height; y++) {
-      for(let x = fallingXPos; x < fallingXPos + tetromino.shape.size; x++) {
-        if(this.frozen[y][x] !== '.') return false;
+  detectCollision(t) {
+    const { x, y } = this.fallingPos;
+    for (let r = 0; r < t.shape.size; r++) {
+      for (let c = 0; c < t.shape.size; c++) {
+        if (t.shape.cube[r][c] === '.') continue;
+        const row = y + r, col = x + c;
+        const isOut = col < 0 || col >= this.width || row >= this.height;
+        const overlaps = row >= 0 && this.frozen[row][col] !== '.';
+        if (isOut || overlaps) return false;
       }
     }
     return true;
