@@ -73,13 +73,6 @@ export class Board {
         return;
       }
     }
-
-    for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
-      for (let j = this.fallingPos.x; j <= this.fallingPos.x + this.tetromino.width - 1; j++) {
-        this.board[i + 1][j] = this.board[i][j];
-        this.board[i][j] = '.';
-      }
-    }
     this.fallingPos.y += 1;
   }
 
