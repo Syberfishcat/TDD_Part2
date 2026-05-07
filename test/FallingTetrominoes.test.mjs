@@ -172,14 +172,17 @@ describe("Falling tetrominoes", () => {
 
   test("it cannot be moved right through other blocks", () => {
     board.drop(Tetromino.T_SHAPE);
-    fallToBottom(board)
     board.moveDown();
     board.moveRight();
     board.moveRight();
     board.moveRight();
     board.moveRight();
+    fallToBottom(board)
     board.drop(Tetromino.T_SHAPE);
-    fallToBottom(board);
+    board.moveDown();
+    board.moveDown();
+    board.moveDown();
+    board.moveDown();
     board.moveRight();
     board.moveRight();
 
