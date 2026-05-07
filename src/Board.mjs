@@ -43,6 +43,8 @@ export class Board {
     }
   }
 
+
+
   paintFrozen(tetromino) {
     let canvas = structuredClone(this.frozen);
     let fallingXPos = this.fallingPos.x;
