@@ -148,8 +148,11 @@ export class Board {
   }
 
   rotateLeft() {
-    this.tetromino = this.tetromino.rotateLeft();
-    this.doRotate(this.tetromino);
+    let tetromino = this.tetromino.rotateLeft();
+    if(this.detectCollision(tetromino)) {
+      this.tetromino = tetromino;
+      this.doRotate(this.tetromino);
+    }
   }
 
   tick() {
