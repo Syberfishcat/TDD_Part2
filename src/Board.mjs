@@ -116,9 +116,8 @@ export class Board {
       for (let c = 0; c < t.shape.size; c++) {
         if (t.shape.cube[r][c] === '.') continue;
         const row = y + r, col = x + c;
-        const isOut = col < 0 || col >= this.width || row >= this.height;
-        const overlaps = row >= 0 && this.frozen[row][col] !== '.';
-        if (isOut || overlaps) return false;
+        if (col < 0 || col >= this.width || row >= this.height) return false;
+        if (row >= 0 && this.frozen[row][col] !== '.') return false;
       }
     }
     return true;
