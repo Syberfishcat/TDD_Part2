@@ -17,9 +17,9 @@ export class Board {
 
   toString() {
     let str = '';
-    // if(this.tetromino) {
-    //   this.paintTetromino();
-    // }
+    if(this.tetromino) {
+      this.paintTetromino();
+    }
     this.board.forEach(h => {
       h.forEach(item => {
         str += item;
@@ -45,10 +45,10 @@ export class Board {
     let fallingXPos = this.fallingPos.x;
     let fallingYPos = this.fallingPos.y;
     let fallingSize = this.tetromino.shape.size;
-    for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
+    for(let y = fallingYPos; y < fallingYPos + this.tetromino.height; y++) {
       if(y >= 0) {
-        for(let x = fallingXPos; x < fallingXPos + this.tetromino.shape.size; x++) {
-          this.board[y][x] = this.tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];
+        for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
+          this.board[y][x] = this.tetromino.rows.flatMap(item => [...item])[(y - fallingYPos) * fallingSize + x - fallingXPos];
         }
       }else {
         continue;
