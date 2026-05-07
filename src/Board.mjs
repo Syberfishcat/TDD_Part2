@@ -120,6 +120,7 @@ export class Board {
     const oldY = this.fallingPos.y;
     
     if(oldY < 0) this.fallingPos.y = 0;
+    if(oldY + next.height > this.height - 1) this.fallingPos.y -= this.fallingPos.y + next.height - this.height;
     for (let dx of [0, -1, 1, -2, 2]) {
       this.fallingPos.x = oldX + dx;
       if (this.detectCollision(next)) {
