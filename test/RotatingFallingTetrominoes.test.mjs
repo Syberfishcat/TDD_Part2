@@ -30,56 +30,55 @@ describe("Rotating falling tetrominoes", () => {
                  ..........`
             );
         });
-    })
 
+        test("a falling tetromino can be rotated left", () => {
+            board.drop(Tetromino.T_SHAPE);
+            board.rotateLeft();
+    
+            expect(board.toString()).to.equalShape(
+                `....T.....
+                 ...TT.....
+                 ....T.....
+                 ..........
+                 ..........
+                 ..........`
+            );
+        })
 
-    test("a falling tetromino can be rotated left", () => {
-        board.drop(Tetromino.T_SHAPE);
-        board.rotateLeft();
-
-        expect(board.toString()).to.equalShape(
-            `....T.....
-             ...TT.....
-             ....T.....
-             ..........
-             ..........
-             ..........`
-        );
-    })
-
-    test("it cannot be rotated right when there is no room (blocked by other blocks)", () => {
-        board.drop(Tetromino.T_SHAPE);
-        fallToBottom(board);
-        board.drop(Tetromino.T_SHAPE);
-        board.tick();
-        board.tick();
-        board.rotateRight();
-        
-        expect(board.toString()).to.equalShape(
-            `..........
-             ..........
-             ....T.....
-             ...TTT....
-             ....T.....
-             ...TTT....`
-        );
-    })
-
-    test("it cannot be rotated left when there is no room (blocked by other blocks)", () => {
-        board.drop(Tetromino.T_SHAPE);
-        fallToBottom(board);
-        board.drop(Tetromino.T_SHAPE);
-        board.tick();
-        board.tick();
-        board.rotateLeft();
-        
-        expect(board.toString()).to.equalShape(
-            `..........
-             ..........
-             ....T.....
-             ...TTT....
-             ....T.....
-             ...TTT....`
-        );
+        test("it cannot be rotated right when there is no room (blocked by other blocks)", () => {
+            board.drop(Tetromino.T_SHAPE);
+            fallToBottom(board);
+            board.drop(Tetromino.T_SHAPE);
+            board.tick();
+            board.tick();
+            board.rotateRight();
+            
+            expect(board.toString()).to.equalShape(
+                `..........
+                 ..........
+                 ....T.....
+                 ...TTT....
+                 ....T.....
+                 ...TTT....`
+            );
+        })
+    
+        test("it cannot be rotated left when there is no room (blocked by other blocks)", () => {
+            board.drop(Tetromino.T_SHAPE);
+            fallToBottom(board);
+            board.drop(Tetromino.T_SHAPE);
+            board.tick();
+            board.tick();
+            board.rotateLeft();
+            
+            expect(board.toString()).to.equalShape(
+                `..........
+                 ..........
+                 ....T.....
+                 ...TTT....
+                 ....T.....
+                 ...TTT....`
+            );
+        })
     })
 })
