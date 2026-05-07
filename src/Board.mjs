@@ -32,9 +32,9 @@ export class Board {
   drop(symbol) {
     if (this.fallingFlag) throw "already falling";
     this.tetromino = symbol instanceof Tetromino ? symbol : Tetromino.fromSymbol(symbol);
-    const size = this.tetromino.shape.size;
+    const size = this.tetromino.size;
     const x = Math.floor((this.width - size) / 2);
-    const firstRow = this.tetromino.shape.cube.findIndex(row => row.some(c => c !== '.'));
+    const firstRow = this.tetromino.cube.findIndex(row => row.some(c => c !== '.'));
     this.fallingPos = { x, y: 0 - firstRow };
     this.fallingFlag = true;
   }
@@ -42,7 +42,7 @@ export class Board {
   paintTetromino() {
     this.board = structuredClone(this.frozen);
     const { x, y } = this.fallingPos;
-    const cube = this.tetromino.shape.cube;
+    const cube = this.tetromino.cube;
     for (let r = 0; r < cube.length; r++) {
       for (let c = 0; c < cube[r].length; c++) {
         const bY = y + r, bX = x + c;
@@ -54,7 +54,7 @@ export class Board {
 
   paintFrozen(t) {
     const { x, y } = this.fallingPos;
-    const cube = t.shape.cube;
+    const cube = t.cube;
     for (let r = 0; r < cube.length; r++) {
       for (let c = 0; c < cube[r].length; c++) {
         const boardY = y + r;
@@ -90,9 +90,9 @@ export class Board {
 
   detectCollision(t) {
     const { x, y } = this.fallingPos;
-    for (let r = 0; r < t.shape.size; r++) {
-      for (let c = 0; c < t.shape.size; c++) {
-        if (t.shape.cube[r][c] === '.') continue;
+    for (let r = 0; r < t.size; r++) {
+      for (let c = 0; c < t.size; c++) {
+        if (t.cube[r][c] === '.') continue;
         const row = y + r, col = x + c;
         const isOut = col < 0 || col >= this.width || row >= this.height;
         if (isOut || (row >= 0 && this.frozen[row][col] !== '.')) return false;
