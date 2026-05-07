@@ -31,13 +31,9 @@ export class Board {
     
     if(!this.fallingFlag){
       const x = parseInt((this.width - this.tetromino.width) / 2);
-      for(let i = 0; i < this.tetromino.height; i++) {
-        for(let j = 0; j < this.tetromino.width; j++) {
-          this.board[i][x + j] = [...this.tetromino.rows[i]][j];
-        }
-      }
       this.fallingFlag = true;
       this.fallingPos = { x, y: 0 }
+      this.paintBoard();
     }else{
       throw "already falling";
     }
@@ -49,8 +45,8 @@ export class Board {
     let fallingSize = this.tetromino.shape.size;
     for(let y = fallingYPos; y < fallingYPos + fallingSize; y++) {
       if(y >= 0) {
-        for(let x = fallingXPos; x < fallingXPos + tetromino.shape.size; x++) {
-          this.board[y][x] = tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];
+        for(let x = fallingXPos; x < fallingXPos + this.tetromino.shape.size; x++) {
+          this.board[y][x] = this.tetromino.shape.cube.flat()[(y - fallingYPos) * fallingSize + x - fallingXPos];
         }
       }else {
         continue;
