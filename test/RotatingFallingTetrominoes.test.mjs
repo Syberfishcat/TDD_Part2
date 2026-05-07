@@ -155,7 +155,7 @@ describe("Rotating falling tetrominoes", () => {
             );
         })
 
-        test.skip("wall kick: rotated against the left wall, moves right, supplement", () => {
+        test("wall kick: rotated against the left wall, moves right, supplement", () => {
             board.drop(Tetromino.I_SHAPE);
             board.rotateRight();
             board.tick();
