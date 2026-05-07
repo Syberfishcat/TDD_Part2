@@ -212,5 +212,24 @@ describe("Rotating falling tetrominoes", () => {
                  ....I.....`
             );
         })
+
+        test("wall kick: rotated against the bottom wall and recovery", () => {
+            for (let i = 3; i < 6; i++) {
+                for (let j = 0; j < 10; j++) {
+                    board.frozen[i][j] = 'X'
+                }
+            }
+            board.drop(Tetromino.I_SHAPE);
+            board.rotateLeft();
+
+            expect(board.toString()).to.equalShape(
+                `...IIII...
+                 ..........
+                 ..........
+                 XXXXXXXXXX
+                 XXXXXXXXXX
+                 XXXXXXXXXX`
+            );
+        })
     })
 })
