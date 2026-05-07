@@ -84,15 +84,10 @@ export class Board {
   }
 
   moveRight() {
-    let rightEdge = this.fallingPos.x + this.tetromino.width - 1;
-
-    if(rightEdge === this.width - 1) return;
-    let bottomEdge = this.fallingPos.y + this.tetromino.height - 1;
-    for (let i = bottomEdge; i >= bottomEdge - this.tetromino.height + 1; i--) {
-      if(this.board[i][rightEdge + 1] !== '.') return;
+    this.fallingPos.x++;
+    if (!this.detectCollision(this.tetromino)) {
+      this.fallingPos.x--;
     }
-
-    this.fallingPos.x += 1;
   }
 
   detectCollision(t) {
