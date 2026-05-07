@@ -89,18 +89,15 @@ export class Board {
   }
 
   detectCollision(t) {
-    let { x, y } = this.fallingPos;
-    if (x < 0) x = 0;
-    if (x + t.shape.size > this.width) x = this.width - t.shape.size + 1;
+    const { x, y } = this.fallingPos;
     for (let r = 0; r < t.shape.size; r++) {
       for (let c = 0; c < t.shape.size; c++) {
         if (t.shape.cube[r][c] === '.') continue;
         const row = y + r, col = x + c;
-        if (col >= this.width || row >= this.height) return false;
-        if (row >= 0 && this.frozen[row][col] !== '.') return false;
+        const isOut = col < 0 || col >= this.width || row >= this.height;
+        if (isOut || (row >= 0 && this.frozen[row][col] !== '.')) return false;
       }
     }
-    this.fallingPos = { x, y };
     return true;
   }
 
