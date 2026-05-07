@@ -45,15 +45,6 @@ export class Board {
     let fallingXPos = this.fallingPos.x;
     let fallingYPos = this.fallingPos.y;
     let fallingSize = this.tetromino.shape.size;
-    for(let y = fallingYPos; y < fallingYPos + this.tetromino.height; y++) {
-      if(y >= 0) {
-        for(let x = fallingXPos; x < fallingXPos + fallingSize; x++) {
-          this.board[y][x] = this.tetromino.rows.flatMap(item => [...item])[(y - fallingYPos) * fallingSize + x - fallingXPos];
-        }
-      }else {
-        continue;
-      }
-    }
   }
 
   paintTetromino() {
