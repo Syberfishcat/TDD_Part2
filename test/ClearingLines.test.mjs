@@ -30,6 +30,22 @@ describe("Clearing lines", () => {
     );
   });
 
+  test("rows above a cleared row move down", () => {
+    board.frozen[4][0] = 'X';
+    for (let j of [0, 1, 2, 7, 8, 9]) board.frozen[5][j] = 'X';
+    board.drop(Tetromino.I_SHAPE);
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       X.........`
+    );
+  });
+
   test("four full rows are removed at once (Tetris)", () => {
     for (let i = 2; i < 6; i++) {
       for (let j = 0; j < 10; j++) {
