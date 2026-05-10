@@ -29,4 +29,24 @@ describe("Clearing lines", () => {
        ..........`
     );
   });
+
+  test("four full rows are removed at once (Tetris)", () => {
+    for (let i = 2; i < 6; i++) {
+      for (let j = 0; j < 10; j++) {
+        if (j !== 4) board.frozen[i][j] = 'X';
+      }
+    }
+    board.drop(Tetromino.I_SHAPE);
+    board.rotateRight();
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
 });
