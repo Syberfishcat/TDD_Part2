@@ -4,6 +4,7 @@ export class Scoring {
   }
 
   onLinesCleared(n) {
-    this.score += 40;
+    const points = [0, 40, 100, 300, 1200];
+    this.score += points[n];
   }
 }
