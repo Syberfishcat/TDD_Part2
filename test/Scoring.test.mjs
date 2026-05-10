@@ -16,4 +16,9 @@ describe("Scoring", () => {
     scoring.onLinesCleared(1);
     expect(scoring.score).to.equal(40);
   });
+
+  test("a double line clear gives 100 points", () => {
+    scoring.onLinesCleared(2);
+    expect(scoring.score).to.equal(100);
+  });
 });
