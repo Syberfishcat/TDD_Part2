@@ -78,11 +78,16 @@ export class Board {
     }
   }
 
+  setObserver(observer) {
+    this.observer = observer;
+  }
+
   clearLines() {
     const kept = this.frozen.filter(row => row.some(c => c === '.'));
     const cleared = this.height - kept.length;
     const empty = Array.from({ length: cleared }, () => new Array(this.width).fill('.'));
     this.frozen = [...empty, ...kept];
+    if (cleared > 0) this.observer?.onLinesCleared(cleared);
   }
 
   moveLeft() {
