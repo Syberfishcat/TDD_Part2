@@ -30,6 +30,16 @@ describe("Clearing lines", () => {
     );
   });
 
+  test("notifies the observer with the number of cleared rows", () => {
+    const cleared = [];
+    board.setObserver({ onLinesCleared: (n) => cleared.push(n) });
+    for (let j of [0, 1, 2, 7, 8, 9]) board.frozen[5][j] = 'X';
+    board.drop(Tetromino.I_SHAPE);
+    fallToBottom(board);
+
+    expect(cleared).to.deep.equal([1]);
+  });
+
   test("rows above a cleared row move down", () => {
     board.frozen[4][0] = 'X';
     for (let j of [0, 1, 2, 7, 8, 9]) board.frozen[5][j] = 'X';
