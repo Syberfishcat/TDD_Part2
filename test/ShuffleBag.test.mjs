@@ -25,4 +25,12 @@ describe("ShuffleBag", () => {
       expect(ALL_PIECES).to.include(piece);
     }
   });
+
+  test("each round of 7 draws contains all 7 pieces exactly once", () => {
+    for (let round = 0; round < 3; round++) {
+      const drawn = new Set();
+      for (let i = 0; i < 7; i++) drawn.add(bag.next());
+      expect(drawn.size).to.equal(7);
+    }
+  });
 });
